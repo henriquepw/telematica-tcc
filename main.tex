@@ -70,6 +70,10 @@
 \newcommand{\hm}[1]{{\color{red}[HM] #1}}
 \newcommand{\todo}[1]{{\color{red}[TO-DO] #1}}
 
+\newcommand{\subItem}[1]{
+  {\setlength\itemindent{15pt} \item[-] #1}
+}
+
 \input{./sections/preTextual/cover.tex}
 	
 % ---
@@ -143,8 +147,7 @@
 % ---
 % Introdução (exemplo de capítulo sem numeração, mas presente no Sumário)
 \input{sections/textual/introduction.tex}
-
-% \input{sections/textual/chapters.tex} % Capítulos
+\input{sections/textual/foundation.tex}
 
 % ---
 % Finaliza a parte no bookmark do PDF

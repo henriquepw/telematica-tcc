@@ -1,0 +1,66 @@
+\chapter{Fundamentação Teórica}
+\label{cap:fundamentacao}
+
+% ---
+\section{Internet das Coisas}
+\label{fund:iot}
+
+% ---
+\section{Plataforma de prototipagem}
+\label{fund:plataforma-proto}
+
+% ---
+\section{Protocolos de comunicação}
+\label{fund:protocolos}
+
+% ----
+\subsection{LoRa}
+\label{fund:lora}
+% ----
+\subsection{Wi-Fi}
+\label{fund:wifi}
+
+% ---
+\section{Servidor}
+\label{fund:servidor}
+
+% ----
+\subsection{Node.js}
+\label{fund:node}
+
+% ----
+\subsection{InfluxDB}
+\label{fund:influxdb}
+O InfluxDB é um banco de dados que armazena series temporais (\textit{data series database}), ou seja, sua chave é o tempo e sua forma de armazenagem de dados é em ordem cronológica. Ele foi projetado para lidar com grandes cargas de escrita e consulta, perfeita para armazenar dados em tempo real, como monitoramento de DevOps, métricas de aplicativos, big data e dados de sensores da IoT\cite{giacobbe2018implementation}. De forma geral, séries temporais acabam se tornando gráficos em função do tempo em um determinado período, por exemplo a temperatura de um freezer ao decorrer do dia, podendo assim ver facilmente a máxima, a minima e suas variações. Esses dados podem ser também coletados e feito uma analise mais complexa usando qualquer ferramente estatística, dependendo da sua necessidade.
+
+O InfluxDB é composto por \textit{databases} (bancos de dados), \textit{measurements} (medições), \textit{fields} (campos) e \textit{tags}. Podemos representar essa estrutura como conjuntos como podemos \todo{ver na figura X}, no InfluxDB é possível ter inúmeros \textit{databases}, onde cada \textit{database} contém suas \textit{measurements} que são tabelas de dados correspondente a algum dado em específico, por exemplo, se tivermos 2 sensores que coletam dados diferentes, cada sensor viraria um \textit{measurement}, e cada \textit{measurement} é composto  de dois tipo de atributos, os \textit{fields}, onde ficam os dados da sua medida, e as \textit{tags}, que são campos de dados que diferem \textit{fields} por serem campos indexáveis, feitos exclusivamente para realizar buscas, por exemplo, é comum adicionar uma \textit{tag} que seja um identificador do dispositivo que coletou esse medida.
+
+\todo{adicionar figura}
+
+% ----
+\subsection{Docker}
+\label{fund:docker}
+Docker é uma plataforma \textit{open source}, desenvolvida utilizando a linguagem de programação GO pela Google com o objetivo de criar facilmente  ambientes isolados (containers) com um alto desempenho e que sejam portáteis, sendo uma opção em relação as virtualizações. Desta maneira, é possível, por exemplo, criar inúmeras aplicações usando as mesmas tecnologias, cada uma em um \textit{container} diferente e nenhuma vai interferir na outra, e todas na mesma máquina, e se for preciso replicar em outra máquina, é possível criar uma imagem do container e instalar o mesmo ambiente nesta outra máquina.
+
+Em comparação com as virtualizações, os containers não precisam de um sistema operacional, apenas o essencial para executar determinada função. Dessa forma, os containers conseguem ter um controle maior, consomem menos recursos, ganham uma maior flexibilidade e uma manutenibilidade. Podemos ver a comparação entre virtualização e containers na figura abaixo.
+
+\todo{adicionar figura}
+
+% referencias
+% - https://www.opservices.com.br/o-que-e-docker/
+% - https://www.meupositivo.com.br/panoramapositivo/container-docker/
+% - https://www.treinaweb.com.br/blog/no-final-das-contas-o-que-e-o-docker-e-como-ele-funciona/
+
+% % ---
+\section{Aplicativo movel}
+\label{fund:app}
+
+% ----
+\subsection{React Native}
+\label{fund:react-native}
+
+% ---
+\section{Trabalhos Relacionados}
+\label{fund:trabalhos-relacionados}
+
+\todo {Falar dos trabalhos}
