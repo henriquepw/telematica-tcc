@@ -14,6 +14,14 @@ Do ponto de vista da produtividade, IoT apresenta-se como um importante meio pel
 % ---
 \section{Sensor DHT-22}
 \label{fund:dht-22}
+O sensor DHT-22 é um sensor de temperatura e umidade da família de sensores DHT comumente utilizado em aplicações da IoT por ser um sensor pequeno(como podemos ver na figura \ref{fig:dht-22}) e possuir um baixo custo. Ele opera na faixa de 3.3 a 6 Volts e consegue capturar dados de temperatura entre -40°C a 80°C e umidade entre 0\% a 100\% RH, com uma acurácia de 0.5°C e 2\% RH, respectivamente \cite{datasheetDHT22}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.80\textwidth]{assets/dht-22.png} 
+  \caption{Dimensões em milímetros do sensor DHT-22 (Retirado de \cite{datasheetDHT22}).}
+  \label{fig:dht-22} 
+\end{figure}
 
 % ---
 \section{Protocolos de comunicação}
@@ -25,7 +33,6 @@ Do ponto de vista da produtividade, IoT apresenta-se como um importante meio pel
 A tecnologia Long Range, LoRa, é uma forma de comunicação sem fio, semelhante ao Wi-Fi e ao Bluetooth, que permite um longo alcance de comunicação com baixo custo. O raio de comunicação sem fio utilizando o LoRa, dependendo do dispositivo selecionado, pode alcançar quilômetros de distância.
 
 Embora o LoRa tenha sido fundamentalmente desenvolvido pela Semtech Corporation, o padrão imposto pelo LoRa permitiu que muitas empresas utilizassem para diversos projetos com um custo benefício satisfatório, aumentando o ecossistema e ganhando um envolvimento significativamente maior, uma variedade maior de produtos e um aumento geral no uso e aceitação. 
-
 
 A baixa potência e os recursos de longo alcance significam que os pontos finais podem ser implantados em uma ampla variedade de locais, e ainda têm a capacidade de se comunicar com o gateway, que pode receber informações de vários LoRa e enviar para um servidor, por exemplo, e processar dados.
 
@@ -66,8 +73,6 @@ O InfluxDB é composto por \textit{databases} (bancos de dados), \textit{measure
 \caption{Composição de um banco de dados do InfluxDB (Autoral).}
 \label{fig:influxdb-struct} 
 \end{figure}
-
-\todo{adicionar figura}
 
 % ----
 \subsection{Docker}
