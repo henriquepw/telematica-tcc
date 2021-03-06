@@ -1,5 +1,6 @@
 \chapter{Fundamentação Teórica}
 \label{cap:fundamentacao}
+Neste capítulo será abordado sobre os principais conceitos e tecnologias utilizadas no desenvolvimento deste projeto, do hardware à aplicação móvel, iniciando pelo conceito principal, a Internet das Coisas.
 
 % ---
 \section{Internet das Coisas}
@@ -9,7 +10,6 @@ Com o intuito de ampliar a internet atual, interligando os objetos do nosso coti
 Deste modo, é adicionando uma nova gama de possibilidades, trazendo grandes benefícios para ambientes domésticos, mas principalmente para a zona industrial. No primeiro caso, aplicações, tais como: aprendizagem reforçada, monitoramento e vigilância inteligentes e vida assistida têm despontado entre aquelas que mais chamam atenção, tanto dos usuários, como das empresas de desenvolvimento de soluções tecnológicas. No segundo caso, IoT se apresenta como um diferencial competitivo importante em campos tais como automação e manufatura industrial, logística, gestão de processos de negócio, etc.
 
 Do ponto de vista da produtividade, IoT apresenta-se como um importante meio pelo qual pode-se desenvolver aplicações sofisticadas que podem integrar o mundo real e o mundo virtual. Em empresas de manufatura, produtos conectados permitem a existência de um ambiente de serviços e produtos no qual a manutenção pode ser realizada baseada na necessidade real, em vez de uma suposição estatística. Adicionalmente, produtos e máquinas conectados podem receber atualizações de software quando disponíveis, para garantir que estejam sempre funcionando em eficiência ótima.
-
 
 % ---
 \section{Sensor DHT-22}
@@ -26,6 +26,7 @@ O sensor DHT-22 é um sensor de temperatura e umidade da família de sensores DH
 % ---
 \section{Protocolos de comunicação}
 \label{fund:protocolos}
+Protocolos de comunicação são conjuntos de normas que definem uma forma de troca de mensagens entre dois ou mais dispositivos em um determinado meio físico, os meios mais comuns são por cabos de materiais condutores e pelo ar, transmitindo ondas eletromagnéticas, na IoT o que se predomina é por meio sem fio (\textit{wireless}). Neste projeto, foram utilizados dois protocolos de comunicações, o LoRa e o HTTP.
 
 % ----
 \subsection{LoRa}
@@ -45,8 +46,8 @@ O LoRa em si diz respeito à camada física, sendo que a camada lógica é chama
 % - https://lora-alliance.org/sites/default/files/2018-07/lorawan1.0.3.pdf
 
 % ----
-\subsection{Wi-Fi}
-\label{fund:wifi}
+\subsection{HTTP/HTTPS}
+\label{fund:http}
 
 % ---
 \section{Plataforma de prototipagem}
