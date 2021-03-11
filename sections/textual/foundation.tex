@@ -12,6 +12,48 @@ Deste modo, é adicionando uma nova gama de possibilidades, trazendo grandes ben
 Do ponto de vista da produtividade, IoT apresenta-se como um importante meio pelo qual pode-se desenvolver aplicações sofisticadas que podem integrar o mundo real e o mundo virtual. Em empresas de manufatura, produtos conectados permitem a existência de um ambiente de serviços e produtos no qual a manutenção pode ser realizada baseada na necessidade real, em vez de uma suposição estatística. Adicionalmente, produtos e máquinas conectados podem receber atualizações de software quando disponíveis, para garantir que estejam sempre funcionando em eficiência ótima.
 
 % ---
+\section{Protocolos de comunicação}
+\label{fund:protocolos}
+Protocolos de comunicação são conjuntos de normas que definem uma forma de troca de mensagens entre dois ou mais dispositivos em um determinado meio físico, os meios mais comuns são por cabos de materiais condutores e pelo ar, transmitindo ondas eletromagnéticas, na IoT o que se predomina é por meio sem fio (\textit{wireless}). Neste projeto, foram utilizados dois protocolos de comunicações, o LoRa e o HTTP.
+
+% ----
+\subsection{LoRa}
+\label{fund:lora}
+A tecnologia Long Range, LoRa, é uma forma de comunicação sem fio, semelhante ao Wi-Fi e ao Bluetooth, que permite um longo alcance de comunicação com baixo custo. O raio de comunicação sem fio utilizando o LoRa, dependendo do dispositivo selecionado, pode alcançar quilômetros de distância.
+
+Embora o LoRa tenha sido fundamentalmente desenvolvido pela Semtech Corporation, o padrão imposto pelo LoRa permitiu que muitas empresas utilizassem para diversos projetos com um custo benefício satisfatório, aumentando o ecossistema e ganhando um envolvimento significativamente maior, uma variedade maior de produtos e um aumento geral no uso e aceitação. 
+
+O LoRa em si diz respeito à camada física, sendo que a camada lógica é chamada de LoRaWAN, que é um protocolo usado pelo LoRa para comunicação entre pontos de conexões de um nós final (\textit{End Nodes}) para envios de informações diretamente a um concentrador (\textit{Gateway}), que centralizar as informações e envia a um determinado sistema \cite{lora2021specification}. Os End Nodes são dispositivos responsáveis por coletar os dados necessários e transmiti-los a um determinado Gateway, o Gateway por sua vez, é responsável por receber as informações de múltiplos End Nodes e repassá-lo a um determinado sistema, como por exemplo um servidor onde será armazenado esses dados, como podemos ver na figura \ref{fig:end-nodes-gateways}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.80\textwidth]{assets/lora-network-architecture.png} 
+  \caption{Representação da relação entre os dispositivos LoRa (Adaptada de \cite{lora2021architecture}).}
+  \label{fig:end-nodes-gateways} 
+\end{figure}
+
+% ----
+\subsection{HTTP/HTTPS}
+\label{fund:http}
+Inicialmente utilizado pelo \textit{World-Wide Web}, WWW, em 1990, como o protocolo base da internet por ser uma protocolo leve e rápido para transições de informações em sistemas distribuídos, o \textit{Hypertext Transfer Protocol}, HTTP, é um protocolo que tramite documentos de diversos formatos através da sistemas distribuídos, mais conhecido pela sua disseminação pela internet \cite{berners1996hypertext}. Quanto anos depois, em 1994, a Netscape Communications criou o HTTPS, uma implementação do HTTP adicionando uma nova camada, a de segurança, utilizando-se do protocolo SSL/TLS, um protocolo que fornece segurança entre comunicações sobre rede de computadores.
+
+O HTTP funcionando baseado no paradigma de cliente e servidor, onde o cliente estabelece uma conexão fazendo uma requisição solicitando algo ao servidor, e o servidor por sua vez, o responde enviando uma mensagem.  Tais requisições possuem um método atrelado a ele, esses métodos são usados semanticamente, com o objetivo de organizar e dividir suas responsabilidade, os métodos mais utilizados são: GET, POST, PUT e DELETE. o GET é usado quando o cliente solicita dados ao servidor, o POST quando o cliente quer enviar alguma nova informação, o PUIT é semelhante ao POST, entretanto é referente a atualização de um dados existente e o DELETE é um requisição pedindo a remoção de uma determinada informação \cite{mozilla2019http}.
+
+Essas mensagens que transitam entre clientes e servidores, são compostas por linhas de textos dividas em três blocos como pode ser visto na figura \ref{fig:post-request}, o primeiro bloco consiste em uma linha com o método da requisição, a url, ou seja, o caminha do documento seguido pela a versão do protocolo; o segundo bloco são referentes ao cabeçalho HTTP, responsável por fornecer informações e metadados ao servidor, como o tipo de dado transitado ou dados que alteram seu comportamento; o terceiro bloco é respectivo ao bloco de dados, esse bloco é opcional dependendo do tipo de requisição realizada, mais utilizado pelos métodos POST e PUT.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.80\textwidth]{assets/post-request.png} 
+  \caption{Exemplo de uma requisição POST (Retirado de \cite{mozilla2019http}).}
+  \label{fig:post-request} 
+\end{figure}
+
+
+% ---
+\section{Plataforma de prototipagem}
+\label{fund:plataforma-proto}
+
+% ---
 \section{Sensor DHT-22}
 \label{fund:dht-22}
 O sensor DHT-22 é um sensor de temperatura e umidade da família de sensores DHT comumente utilizado em aplicações da IoT por ser um sensor pequeno(como podemos ver na figura \ref{fig:dht-22}) e possuir um baixo custo. Ele opera na faixa de 3.3 a 6 Volts e consegue capturar dados de temperatura entre -40°C a 80°C e umidade entre 0\% a 100\% RH, com uma acurácia de 0.5°C e 2\% RH, respectivamente \cite{datasheetDHT22}.
@@ -24,38 +66,9 @@ O sensor DHT-22 é um sensor de temperatura e umidade da família de sensores DH
 \end{figure}
 
 % ---
-\section{Protocolos de comunicação}
-\label{fund:protocolos}
-Protocolos de comunicação são conjuntos de normas que definem uma forma de troca de mensagens entre dois ou mais dispositivos em um determinado meio físico, os meios mais comuns são por cabos de materiais condutores e pelo ar, transmitindo ondas eletromagnéticas, na IoT o que se predomina é por meio sem fio (\textit{wireless}). Neste projeto, foram utilizados dois protocolos de comunicações, o LoRa e o HTTP.
-
-% ----
-\subsection{LoRa}
-\label{fund:lora}
-A tecnologia Long Range, LoRa, é uma forma de comunicação sem fio, semelhante ao Wi-Fi e ao Bluetooth, que permite um longo alcance de comunicação com baixo custo. O raio de comunicação sem fio utilizando o LoRa, dependendo do dispositivo selecionado, pode alcançar quilômetros de distância.
-
-Embora o LoRa tenha sido fundamentalmente desenvolvido pela Semtech Corporation, o padrão imposto pelo LoRa permitiu que muitas empresas utilizassem para diversos projetos com um custo benefício satisfatório, aumentando o ecossistema e ganhando um envolvimento significativamente maior, uma variedade maior de produtos e um aumento geral no uso e aceitação. 
-
-A baixa potência e os recursos de longo alcance significam que os pontos finais podem ser implantados em uma ampla variedade de locais, e ainda têm a capacidade de se comunicar com o gateway, que pode receber informações de vários LoRa e enviar para um servidor, por exemplo, e processar dados.
-
-O LoRa em si diz respeito à camada física, sendo que a camada lógica é chamada de LoRaWAN, que é um protocolo usado pelo LoRa para comunicação entre pontos de conexões de um end-node para envios de informações do sistema.
-
-\todo{falar do end-nodes e gateway}
-
-% Referencias
-% - https://www.profissionaisti.com.br/2017/11/iot-protocolo-lorawan-e-principais-placas-de-desenvolvimento-lora/
-% - https://lora-alliance.org/sites/default/files/2018-07/lorawan1.0.3.pdf
-
-% ----
-\subsection{HTTP/HTTPS}
-\label{fund:http}
-
-% ---
-\section{Plataforma de prototipagem}
-\label{fund:plataforma-proto}
-
-% ---
 \section{Servidor}
 \label{fund:servidor}
+\cp{um servidor é um software ou computador, com sistema de computação centralizada que fornece serviços a uma rede de computadores, chamada de cliente. Esses serviços podem ser de naturezas distintas, como por exemplo, arquivos e correio eletrônico.}
 
 % ----
 \subsection{Node.js}
@@ -69,10 +82,10 @@ O InfluxDB é um banco de dados que armazena series temporais (\textit{data seri
 O InfluxDB é composto por \textit{databases} (bancos de dados), \textit{measurements} (medições), \textit{fields} (campos) e \textit{tags}. Podemos representar essa estrutura como conjuntos como podemos ver na figura \ref{fig:influxdb-struct}, no InfluxDB é possível ter inúmeros \textit{databases}, onde cada \textit{database} contém suas \textit{measurements} que são tabelas de dados correspondente a algum dado em específico, por exemplo, se tivermos 2 sensores que coletam dados diferentes, cada sensor viraria um \textit{measurement}, e cada \textit{measurement} é composto  de dois tipo de atributos, os \textit{fields}, onde ficam os dados da sua medida, e as \textit{tags}, que são campos de dados que diferem \textit{fields} por serem campos indexáveis, feitos exclusivamente para realizar buscas, por exemplo, é comum adicionar uma \textit{tag} que seja um identificador do dispositivo que coletou esse medida.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=.80\textwidth]{assets/influxdb-struct.png} 
-\caption{Composição de um banco de dados do InfluxDB (Autoral).}
-\label{fig:influxdb-struct} 
+  \centering
+  \includegraphics[width=.80\textwidth]{assets/influxdb-struct.png} 
+  \caption{Composição de um banco de dados do InfluxDB (Autoral).}
+  \label{fig:influxdb-struct} 
 \end{figure}
 
 % ----
@@ -83,10 +96,10 @@ Docker é uma plataforma \textit{open source}, desenvolvida utilizando a linguag
 Em comparação com as virtualizações, os containers não precisam de um sistema operacional, apenas o essencial para executar determinada função. Dessa forma, os containers conseguem ter um controle maior, consomem menos recursos, ganham uma maior flexibilidade e uma manutenibilidade. Podemos ver a comparação entre virtualização e containers na figura abaixo.
 
 \begin{figure}[!ht]
-\centering
-\includegraphics[width=.80\textwidth]{assets/virtualization-vs-containers.png} 
-\caption{Comparação entre o modelo de virtualização e modelo de containers (Adaptada de Red Hat \cite{redhat2020Containers}).}
-\label{fig:virtualization-vs-containers}
+  \centering
+  \includegraphics[width=.80\textwidth]{assets/virtualization-vs-containers.png} 
+  \caption{Comparação entre o modelo de virtualização e modelo de containers (Adaptada de \cite{redhat2020Containers}).}
+  \label{fig:virtualization-vs-containers}
 \end{figure}
 
 % Referencias
