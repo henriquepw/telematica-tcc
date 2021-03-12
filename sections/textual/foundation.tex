@@ -48,7 +48,6 @@ Essas mensagens que transitam entre clientes e servidores, são compostas por li
   \label{fig:post-request} 
 \end{figure}
 
-
 % ---
 \section{Plataforma de prototipagem}
 \label{fund:plataforma-proto}
@@ -68,11 +67,23 @@ O sensor DHT-22 é um sensor de temperatura e umidade da família de sensores DH
 % ---
 \section{Servidor}
 \label{fund:servidor}
-\cp{um servidor é um software ou computador, com sistema de computação centralizada que fornece serviços a uma rede de computadores, chamada de cliente. Esses serviços podem ser de naturezas distintas, como por exemplo, arquivos e correio eletrônico.}
+Um servidor é um sistema de computação centralizada, responsável por fornecer serviços em uma rede de computadores, tais serviços variam conforme a necessidade do sistema, podendo ser um controlador de domínio, provedor de arquivos, de impressão, de e-mails entre outros. No modelo cliente/servidor (figura \ref{fig:modelo-cliente-servidor}), por sua vez, o servidor é responsável por receber as requisições de clientes, provendo informações e dados de acordo com a demanda.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.80\textwidth]{assets/modelo-cliente-servidor.png} 
+  \caption{Representação do modelo cliente/servidor (Autoral).}
+  \label{fig:modelo-cliente-servidor} 
+\end{figure}
 
 % ----
 \subsection{Node.js}
 \label{fund:node}
+Em 2009, Ryan Dahl criou o Node.js ou simplesmente Node, um ambiente de código aberto de execução Javascript para ser utilizado por servidores (\textit{server-side}) baseado no interpretador V8 da Google. O objetivo do Node é fornecer uma forma de criar serviços com alta capacidade de escala, consumindo pouca memória e de fácil aprendizado. Apesar da linguagem de programação Javascript fornecer uma performance inferior as linguagens já existentes para esse objetivo, seu uso oferece dois grande beneficios, ser uma linguagem de fácil aprendizado e de grande uso por ser a linguagem padrão dos navegadores, e consequentemente do desenvolvimento web \cite{tilkov2010node}.
+
+A forma de execução no Node é por eventos assíncronos, diferente da maioria dos outros ambientes modernos que utilizam threads do sistema operacional. O Node usa apenas uma thread assíncrona principal que executa operações de entrada e saída de dados, E/S, chamada de \textit{Event Loop} \cite{nodejsAbout}. O \textit{Event Loop} funciona em um ciclo, escutando uma lista de chamas, onde são armazenadas as requisições recebidas, e as direcionando cada uma para uma Thread a parte, que executará a função recebida, como podemos ver na figura \todo{adicionar a ref}. A priori, o  Node possui quatro Threads trabalhadoras, responsáveis por executar as funções, entretanto é possível configurar dependendo da máquina onde está sendo efetuado a instância do Node.
+
+\todo{adicionar a figura do clico de eventos do node}
 
 % ----
 \subsection{InfluxDB}
