@@ -65,11 +65,14 @@ Cada usuário pode possuir inúmeras gateways e end nodes cadastrados, e cada en
 % ---
 \subsection{Containers}
 \label{metod:servidor:containers}
+Para facilitar o desenvolvimento do servidor, seu deploy e diminuir possíveis problemas por ter várias aplicações rodando na mesma máquina, foi escolhido por conter tantos os bancos de dados quanto a aplicação em si, utilizando o Docker e para facilitar o gerenciamento dos três containers (PostgreSQl, InfluxDB e a aplicação em Node.js), interligando as redes entre eles, foi utilizado o Docker Compose.
 
+Para os bancos de dados, não foi preciso criar as imagens dos containers, dado que são aplicações muito utilizadas e a própria comunidade já oferece algumas opções dependendo da sua finalidade. Entretanto, para a aplicação em si, foi necessário a criação de uma nova imagem, devido algumas configurações extras exigidas pelas tecnologias utilizadas pela aplicação. Tal imagem foi feita baseando-se na versão alpine do node, uma versão mais leve, com apenas as funcionalidades principais.
 
 % ---
 \subsection{Deploy}
 \label{metod:servidor:deploy}
+Entre as opções de servidores na nuvem, foi escolhido por usar a Microsoft Azure para realizar o deploy do servidor. Sua escolha se deu pois a Microsoft oferece uma assinatura para estudantes, o que não teve nenhum custo adicional no desenvolvimento deste protótipo e na realização dos testes.
 
 % ---
 \section{Aplicativo móvel}
