@@ -1,10 +1,13 @@
 \chapter{Metodologia}
 \label{cap:metodologia}
-O sistema proposto neste projeto, se refere a uma plataforma que fornece tanto os dispositivos para a captação dos dados dos imunobiológicos, quanto ao sistema em nuvem para armazenagem dos dados e do aplicativo android para a gerência e análise das informações, mesma estrutura representada na figura \ref{fig:end-nodes-gateways}. Podemos então, separar este sistema em quatro partes, cada uma delas com uma determinada função, elas são, end-node, gateway, servidor e aplicativo móvel.
+O sistema proposto neste projeto, se refere a uma plataforma que fornece tanto os dispositivos para a captação dos dados dos imunobiológicos, quanto ao sistema em nuvem para armazenagem dos dados e de um aplicativo móvel para a gerência e análise das informações, seguindo a mesma estrutura representada na figura \ref{fig:end-nodes-gateways}, de modo a fornecer aos usuários, um produto  de fácil uso para monitorização de temperatura e umidade, possibilitando o histórico dos dados coletados em um determinado cliente.
+
+Podemos então, separar este sistema em quatro partes, cada uma delas com uma determinada função, elas são, end-node, gateway, servidor e aplicativo móvel.
 
 % ---
 \section{End node}
 \label{metod:node}
+Dentre os diversos sensores disponíveis no mercado para monitoramento de temperatura e umidade, optou-se por escolher um sensor da família DHT, pois é bastante difundida na comunidade, tendo uma boa relação custo benefício. Entre esses sensores, aderimos por usar o DHT22, que consegue captar a temperatura e umidade do ambiente dentro das faixas necessárias para o projeto, com uma boa precisão.
 
 % ---
 \section{Gateway}
@@ -13,6 +16,33 @@ O sistema proposto neste projeto, se refere a uma plataforma que fornece tanto o
 % ---
 \section{Servidor}
 \label{metod:servidor}
+Para este projeto, o servidor tem as seguintes responsabilidades: armazenar os dados coletados pelos end-nodes, juntamente com os dados do instituto que está usando a aplicação e dos seus respectivos end-nodes e gateways adquiridos; fornecer rotas para troca de informações com o aplicativo e o gateway, para que possam realizar sua devidas funções.
+
+Foi escolhido para desenvolver o servidor, a utilização do Node.js e a linguagem Typescript, se baseando em alguns padrões de softwares, como o Domain-Driven Design (DDD), Test-Driven Development (TDD) e o SOLID visando assim, a construção de um servidor robusto, escalável e de fácil manutenção.
+
+Vale salientar que, esses padrões de softwares, são metodologias de desenvolvimento, e devem ser aplicados de acordo com a demanda da aplicação em construção. Elas são boas práticas, entretanto, dependendo do projeto, alguns pontos podem acabar deixando o processo lendo, e dando pouco benefício, e por isso, nesse projeto, não foi seguido fielmente esses padrões, apenas foi baseado.
+
+% ---
+\subsection*{Regras de negócio}
+\label{metod:servidor:regras}
+Antes de tudo, é preciso definir as regras de negócio básicas do servidor, elas servem para garantir que a aplicação atenda as necessidades esperadas. Para este serviço deve ser possível o usuário se cadastrar, para assim realizar seu \textit{login}, e ter acesso às funcionalidades de cadastrar, editar e remover seus end nodes e seus gateways, além de poder visualizar os dados coletados.
+
+% ---
+\subsection*{Desenvolvimento orientado a domínios}
+\label{metod:servidor:DDD}
+O DDD é uma filosofia para auxiliar os desenvolvedores na construção de aplicações complexas de software, ela é referência na organização do código, separando por domínios, de forma isolada. Para poder implementar bem o DDD é preciso definir quais são os domínios da aplicação, analisando as regras de negócio, foi separado em três domínios: end nodes, gateways e usuários.
+
+% ---
+\subsection*{SOLID}
+\label{metod:servidor:SOLID}
+O SOLID é um acrônimo de cinco padrões de projetos para programação orientada a objetos, ajudando o programador a escrever códigos mais limpos, com alta manutenibilidade, separando as responsabilidades e diminuindo acoplamentos.
+
+% ---
+\subsection*{Desenvolvimento orientado a testes}
+\label{metod:servidor:TDD}
+Durante o desenvolvimento de um software, é essencial que a entrega do software funcione corretamente, com qualidade e de acordo com as regras de negócio. Para garantir tais exigências, é importante que se realize testes, tendo em vista identificar possíveis erros antes de chegar aos usuários.
+
+Entretanto, realizar testes corretamente é uma tarefa complicada, por isto, existem diversas metodologias, objetivamente facilitar e simplificar os testes dos diferentes componentes de um produto. O TDD é uma dessas metodologias, ela defende o desenvolvimento do teste primeiro, antes das funcionalidades.
 
 % ---
 \section{Aplicativo móvel}
