@@ -16,7 +16,7 @@ Dentre os diversos sensores disponíveis no mercado para monitoramento de temper
 % ---
 \section{Servidor}
 \label{metod:servidor}
-Para este projeto, o servidor tem as seguintes responsabilidades: armazenar os dados coletados pelos end-nodes, juntamente com os dados do instituto que está usando a aplicação e dos seus respectivos end-nodes e gateways adquiridos; fornecer rotas para troca de informações com o aplicativo e o gateway, para que possam realizar sua devidas funções.
+Para este projeto, o servidor tem as seguintes responsabilidades: armazenar os dados coletados pelos end-nodes, juntamente com os dados do instituto que está usando a aplicação e dos seus respectivos end-nodes e gateways adquiridos; fornecer rotas para troca de informações com o aplicativo e o gateway, para que possam realizar suas devidas funções.
 
 % ---
 \subsection{Padrões de projetos}
@@ -77,3 +77,17 @@ Entre as opções de servidores na nuvem, foi escolhido por usar a Microsoft Azu
 % ---
 \section{Aplicativo móvel}
 \label{metod:app}
+À necessidade de ter um cliente para que os usuário  possa acessar o histórico de medidas e o gerenciar seus dispositivos, tal cliente poderia ser uma página web, entretanto, tendo em vista o crescimento do uso dos smartphones, tivemos como preferência a criação de uma aplicação móvel, mas especificamente para o sistema operacional Android, devido ao sistema iOS da Apple, restringir seu desenvolvimento para aparelhos da marca, incluindo a necessidade de um computador do mesmo para poder emular um dispositivo móvel com seu sistema operacional.
+
+Tendo em mente as regras de negócios destrinchadas na sessão \ref{metod:servidor:padroes}, a primeira coisa feita foi o desenho das telas utilizando a ferramenta figma, específica para tal tarefa. Ao finalizar os desenhos das telas, partimos para a programação.
+
+Dentre as diversas formas de construir um aplicativo deste porte, a ferramenta escolhida para designar esta função foi o React Native, por motivos de utilizar a mesma linguagem de programação do servidor, typescript, e ter a possibilidade de criar para sistemas iOS futuramente usufruindo do mesmo código.
+
+Pensando na construção de uma aplicação com possibilidades de crescimento altas, foi decidido documentar os componentes que compõem o programa, utilizando a biblioteca Storybook.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.80\textwidth]{assets/example-app-screens.png} 
+  \caption{Desenho das telas de entrar e cadastrar na aplicação (autoral).}
+  \label{fig:app-screns-login} 
+\end{figure}
