@@ -1,17 +1,34 @@
 \chapter{Metodologia}
 \label{cap:metodologia}
-O sistema proposto neste projeto, se refere a uma plataforma que fornece tanto os dispositivos para a captação dos dados dos imunobiológicos, quanto ao sistema em nuvem para armazenagem dos dados e de um aplicativo móvel para a gerência e análise das informações, seguindo a mesma estrutura representada na figura \ref{fig:end-nodes-gateways}, de modo a fornecer aos usuários, um produto  de fácil uso para monitorização de temperatura e umidade, possibilitando o histórico dos dados coletados em um determinado cliente.
+O sistema proposto neste projeto, se refere a uma plataforma que fornece tanto os dispositivos para a captação dos dados dos imunobiológicos, quanto ao sistema em nuvem para armazenagem dos dados e de um aplicativo móvel para a gerência e análise das informações, seguindo a mesma estrutura representada na figura \ref{fig:end-nodes-gateways} na sessão \ref{fund:lora}, de modo a fornecer aos usuários, um produto  de fácil uso para monitorização de temperatura e umidade, possibilitando o histórico dos dados coletados em um determinado cliente.
 
 Podemos então, separar este sistema em quatro partes, cada uma delas com uma determinada função, elas são, end-node, gateway, servidor e aplicativo móvel.
 
 % ---
-\section{End node}
+\section{End Node}
 \label{metod:node}
 Dentre os diversos sensores disponíveis no mercado para monitoramento de temperatura e umidade, optou-se por escolher um sensor da família DHT, pois é bastante difundida na comunidade, tendo uma boa relação custo benefício. Entre esses sensores, aderimos por usar o DHT22, que consegue captar a temperatura e umidade do ambiente dentro das faixas necessárias para o projeto, com uma boa precisão.
 
 % ---
 \section{Gateway}
 \label{metod:gateway}
+O gateway é o dispositivo que fica entre os end nodes e o servidor, e em cada um desses lados, é utilizado uma tecnologia de comunicação diferente, para receber os dados enviados pelos end nodes, se utiliza o LoRa, já para enviar estes dados para o servidor, utiliza-se o HTTP via WiFi. Por isso, é preciso que o gateway possua essas duas tecnologias nele. Felizmente, a Heltec Automation, uma empresa que desenvolve produtos voltada para a IoT utilizando o LoRa, possui um microcontrolador ESP32 que contém tanto o transceptor LoRa, quanto o WiFi, como podemos ver na figura \ref{fig:esp32-lora}. Para programá-lo, foi utilizado a linguagem Arduino, compartilhando assim, a mesma biblioteca entre o end node e o gateway, para o manuseio do transceptor LoRa.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.80\textwidth]{assets/esp32-lora.png} 
+  \caption{Foto do ESP32 LoRa da Heltec Automation (autoral).}
+  \label{fig:esp32-lora} 
+\end{figure}
+
+A configuração do gateway, seu identificador criado pelo servidor e o nome e a senha da rede sem fio que vai ficar conectado, é feita por um ponto de acesso, onde ao liga-lo, ele fornece uma rede sem fio onde é possível acessar seu IP via navegador de Internet, e poder realizar as configurações necessárias.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.80\textwidth]{assets/gateway-ap.png} 
+  \caption{Página de configuração do gateway (autoral).}
+  \label{fig:gateway-ap} 
+\end{figure}
 
 % ---
 \section{Servidor}
@@ -19,7 +36,7 @@ Dentre os diversos sensores disponíveis no mercado para monitoramento de temper
 Para este projeto, o servidor tem as seguintes responsabilidades: armazenar os dados coletados pelos end-nodes, juntamente com os dados do instituto que está usando a aplicação e dos seus respectivos end-nodes e gateways adquiridos; fornecer rotas para troca de informações com o aplicativo e o gateway, para que possam realizar suas devidas funções.
 
 % ---
-\subsection{Padrões de projetos}
+\subsection{Padrões de Projetos}
 \label{metod:servidor:padroes}
 Foi escolhido para desenvolver o servidor, a utilização do Node.js e a linguagem Typescript, se baseando em alguns padrões de softwares, como o Domain-Driven Design (DDD), Test-Driven Development (TDD) e o SOLID visando assim, a construção de um servidor robusto, escalável e de fácil manutenção.
 
@@ -36,7 +53,7 @@ Junto com o TDD, foi utilizado também o DDD, uma filosofia para auxiliar os des
 Para ter uma melhor separação das responsabilidades entre as camadas, é comum utilizar o DDD junto com princípios do SOLID. O SOLID é um acrônimo de 5 princípios da programação orientada a objetos que ajudam o programador a escrever códigos mais limpos, com alta manutenibilidade, separando as responsabilidades e diminuindo acoplamentos.
 
 % ---
-\subsection{Banco de dados}
+\subsection{Banco de Dados}
 \label{metod:servidor:db}
 É preciso armazenar os dados coletados pelos sensores, para futuras consultas, os dados de transmissão dos pacotes, para utilizar se houver perdas entre as transmissões, e é preciso também, salvar os dados dos usuários e dos seus respectivos produtos cadastrados na plataforma. Tais dados têm suas diferenças, e por isto foi escolhido utilizar banco de dados diferentes para cada um deles.
 	
