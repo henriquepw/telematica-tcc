@@ -7,7 +7,31 @@ Podemos então, separar este sistema em quatro partes, cada uma delas com uma de
 % ---
 \section{End Node}
 \label{metod:node}
+O end node é o hardware que fica dentro dos ambientes de armazenagem coletando os dados de temperatura e umidade e enviado para o gateway. Para o melhor entendimento podemos separá-lo em três partes, o sensor, o transceptor LoRa e o microcontrolador, como pode ser visto na figura \ref{fig:end-node-schematic}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.80\textwidth]{assets/end-node-schematic.png} 
+  \caption{Representação da conexão entre os componentes principais do end node (autoral).}
+  \label{fig:end-node-schematic} 
+\end{figure}
+
 Dentre os diversos sensores disponíveis no mercado para monitoramento de temperatura e umidade, optou-se por escolher um sensor da família DHT, pois é bastante difundida na comunidade, tendo uma boa relação custo benefício. Entre esses sensores, aderimos por usar o DHT22, que consegue captar a temperatura e umidade do ambiente dentro das faixas necessárias para o projeto, com uma boa precisão.
+
+Para o microcontrolador, foi escolhido usar um ATmega328, pois é o utilizado na maioria dos Arduinos, o que nos trás dois grandes benefícios, poder utilizar um arduino como protótipo inicial, por ser fácil de encontrar, de programar e para um protótipo secundário, utilizando o microcontrolador sem o Arduino em si, ainda é possível utilizar o mesmo código, bibliotecas e o mesmo Ambiente de desenvolvimento integrado, IDE, utilizado no primeiro protótipo.
+
+Entre os modelos de transceptores LoRa, o eleito foi o RFM95W, por ser o modelo mais simples e com menos custo e por ser o utilizado dentro do \textit{shield} Arduino, um componente modular feito para adicionar novas funcionalidades a um Arduino de forma fácil e prática, facilitando assim, o desenvolvimento do primeiro protótipo.
+
+Em relação à alimentação do protótipo, é um ponto mais complicado de se analisar e ter uma escolha realmente boa para o caso, mesmo fazendo uma análise aprofundada, apenas teremos uma aproximação da sua eficiência, tal processo é melhor detalhado na seção \ref{metod:end-node:2-proto}.
+
+% ---
+\subsection{Primeiro Protótipo}
+\label{metod:end-node:1-proto}
+
+
+% ---
+\subsection{Segundo Protótipo}
+\label{metod:end-node:2-proto}
 
 % ---
 \section{Gateway}
