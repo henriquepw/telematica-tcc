@@ -2,7 +2,16 @@
 \label{cap:metodologia}
 O sistema proposto neste projeto, se refere a uma plataforma que fornece tanto os dispositivos para a captação dos dados dos imunobiológicos, quanto ao sistema em nuvem para armazenagem dos dados e de um aplicativo móvel para a gerência e análise das informações, seguindo a mesma estrutura representada na figura \ref{fig:end-nodes-gateways} na sessão \ref{fund:lora}, de modo a fornecer aos usuários, um produto  de fácil uso para monitorização de temperatura e umidade, possibilitando o histórico dos dados coletados em um determinado cliente.
 
-Podemos então, separar este sistema em quatro partes, cada uma delas com uma determinada função, elas são, end-node, gateway, servidor e aplicativo móvel.
+Podemos então, separar este sistema em quatro partes, cada uma delas com uma determinada função, elas são, end-node, gateway, servidor e aplicativo móvel. Mas antes, para uma visão geral, vamos ver como foi estruturado o envio de pacotes entre cada etapa.
+
+% ---
+\section{Estrutura dos Pacotes}
+\label{metod:pacotes}
+Definir um padrão de transmissão dos pacotes é de suma importância para facilitar a identificação dos dados e ajuda no reconhecimento de possíveis erros que possam ocorrer na transmissão dos dados.
+
+Dentre a comunicação do gateway, servidor e o aplicativo móvel, que utiliza o protocolo HTTP, existem vários padrões de transmitir dados já definidos e consolidados pela comunidade,  um dos mais utilizados é o \textit{JavaScript Object Notation}, JSON, um formato leve e de código aberto, se baseando na estrutura de objetos do JavaScript.
+
+Entretanto, o JSON é considerado uma formato leve para o HTTP e seu ecossistema, para o LoRa, que tem um limite bem menor de dados para ser transmitido, é preciso utilizar outro padrão. Para isto, optamos pelo simples, transmitir os dados separando-os pelo caractere ponto e vírgula, na seguinte ordem: temperatura, umidade, identificador do end node e o contador de pacotes transmitidos.
 
 % ---
 \section{End Node}
@@ -27,16 +36,34 @@ Em relação à alimentação do protótipo, é um ponto mais complicado de se a
 % ---
 \subsection{Primeiro Protótipo}
 \label{metod:end-node:1-proto}
+O primeiro protótipo foi feio com o objetivo de validar os usos das tecnologias, seu alcance, e sua competência em relação a interferências ao longo do trajeto. O consumo energético foi deixado de lado neste protótipo, pois foi utilizado o Arduino e ele possui muitos componentes desnecessários para esta aplicação, que acabam aumentando o gasto energético do dispositivo.
 
+Ele coleta os dando utilizando o sensor DHT-22, formata os dados em uma string e o envia através do LoRa, após isto, ele entra em modo de sono profundo (deep sleep) para economizar bateria por um determinado tempo, ao acordar, ele realiza a medição novamente, e fica nesse ciclo.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.80\textwidth]{assets/end-node-proto-1.png} 
+  \caption{Foto do primeiro protótipo (autoral).}
+  \label{fig:end-node-proto-1} 
+\end{figure}
 
 % ---
 \subsection{Segundo Protótipo}
 \label{metod:end-node:2-proto}
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.80\textwidth]{assets/end-node-proto-2.png} 
+  \caption{Foto do segundo protótipo (autoral).}
+  \label{fig:end-node-proto-2} 
+\end{figure}
+
 % ---
 \section{Gateway}
 \label{metod:gateway}
 O gateway é o dispositivo que fica entre os end nodes e o servidor, e em cada um desses lados, é utilizado uma tecnologia de comunicação diferente, para receber os dados enviados pelos end nodes, se utiliza o LoRa, já para enviar estes dados para o servidor, utiliza-se o HTTP via WiFi. Por isso, é preciso que o gateway possua essas duas tecnologias nele. Felizmente, a Heltec Automation, uma empresa que desenvolve produtos voltada para a IoT utilizando o LoRa, possui um microcontrolador ESP32 que contém tanto o transceptor LoRa, quanto o WiFi, como podemos ver na figura \ref{fig:esp32-lora}. Para programá-lo, foi utilizado a linguagem Arduino, compartilhando assim, a mesma biblioteca entre o end node e o gateway, para o manuseio do transceptor LoRa.
+
+Seu funcionamento segue a seguinte linha, ele fica no aguardo dos pacotes dos end nodes, ao receber um, é realizado uma análise de erro simples, onde é verificado se a formatação do pacote está como esperado, se for detectado algum erro de formatação é enviado para o servidor os valores do RSSI, SNR, o contador do pacote e um atributo booleano marcado como falso, indicando que veio com erro para a seguinte rota, \textit{/packages/:endnodeId}, onde \textit{:endnodeId} é substituído pelo identificador do end node recebido pelo gateway. Se nenhum erro foi detectado, é enviado para a rota do servidor \textit{/sensors/:endnodeId}, os mesmo dados de RSSI, SNR e contador do pacote com o acréscimo dos dados de temperatura e umidade.
 
 \begin{figure}[H]
   \centering
