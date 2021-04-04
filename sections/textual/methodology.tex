@@ -62,7 +62,33 @@ O objetivo na construção deste protótipo é construir um dispositivo com um t
 % ---
 \subsection{Escolha da Bateria}
 \label{metod:end-node:bateria}
+A parte crucial a ser analisada é o consumo de energia, isso é importante para a escolha correta da bateria, que levará a uma duração aceitável do circuito que pode ser meses até anos dependendo da necessidade do produto. É preciso ter em mente as tensões de trabalho dos componentes principais da aplicação, para assim ser possível analisar qual deve ser o valor ideal de trabalho do dispositivo, é possível ver tal informação na tabela \ref{tab:end-node-componentes-volts}, mostrando a tensão mínima e máxima do microcontrolador, transceptor e sensor. Com isto, podemos ver que a tensão de limite superior do dispositivo é referente ao do transceptor LoRa, que funciona até 3,7 Volts, e a tensão de limite inferior, é a do sensor DHT-22, que equivale a 3,3 Volts, se utilizar uma tensão fora deixa faixa, o dispositivo não funcionará corretamente. 
 
+A ideia inicial antes da análise era de usar duas pilhas AA convencionais, entretanto após a análise, tal opção torna-se inviável, pois a tensão máxima de duas baterias AA equivale a 3 Volts, o que é menos do que o mínimo necessário para o sensor DHT-22 funcionar.
+
+\begin{table}[H]
+\centering 
+\scalebox{1} {
+	\begin{tabular}{l | l}
+	\textbf{Componente}&\textbf{Tensão de trabalho}\\[5pt] \hline
+  \\
+	ATmega328&2,7V até 5,5V\\[5pt]
+	LoRa RFM95W&1,8V até 3,7V\\[5pt]
+	DHT-22&3,3V até 5,5V\\[5pt]
+	\end{tabular}
+}
+\caption{tensão de trabalho dos componentes principais do protótipo (autoral).}
+\label{tab:end-node-componentes-volts}
+\end{table}
+
+Depois de algumas pesquisas, nos deparamos com uma bateria genérica de referência 18650, que tem o mesmo tamanho de uma AA, é fácil de encontrar em lojas de eletrônica, tem uma capacidade que varia entre 2200mAh e 3400mAh conforme o fabricante, e o mais importante, tem a tensão nominal de 3.7 Volts, o máximo que nosso circuito suporta. Sabendo que os ambientes de armazenagens de vacinas ficaram em torno de -5°C a 8°C, na figura \ref{fig:battery-discharge} podemos ver a linha de descarga da bateria conforme a temperatura de funcionamento, para simplificar os cálculos podemos usar a linha em azul de 0°C. nossa tensão de corte é de 3.3 Volts, analisando o gráfico vemos que a bateria em um ambiente a 0°C a capacidade da bateria cai para aproximadamente 90\%, que equivale há 1980mAh do modelo de 2200mAh.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.80\textwidth]{assets/18650-discharge.png} 
+  \caption{Descarga da bateria 18650 conforme a temperatura do ambiente (Adaptada de \cite{EEMB201018650}).}
+  \label{fig:battery-discharge} 
+\end{figure}
 
 % ---
 \section{Gateway}
