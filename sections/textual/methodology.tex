@@ -31,7 +31,7 @@ Para o microcontrolador, foi escolhido usar um ATmega328, pois é o utilizado na
 
 Entre os modelos de transceptores LoRa, o eleito foi o RFM95W, por ser o modelo mais simples e com menos custo e por ser o utilizado dentro do \textit{shield} Arduino, um componente modular feito para adicionar novas funcionalidades a um Arduino de forma fácil e prática, facilitando assim, o desenvolvimento do primeiro protótipo.
 
-Em relação à alimentação do protótipo, é um ponto mais complicado de se analisar e ter uma escolha realmente boa para o caso, mesmo fazendo uma análise aprofundada, apenas teremos uma aproximação da sua eficiência, tal processo é melhor detalhado na seção \ref{metod:end-node:2-proto}.
+Em relação à alimentação do protótipo, é um ponto mais complicado de se analisar e ter uma escolha realmente boa para o caso, mesmo fazendo uma análise aprofundada, apenas teremos uma aproximação da sua eficiência, tal processo é melhor detalhado na seção \ref{metod:end-node:bateria}.
 
 % ---
 \subsection{Primeiro Protótipo}
@@ -50,6 +50,7 @@ Ele coleta os dando utilizando o sensor DHT-22, formata os dados em uma string e
 % ---
 \subsection{Segundo Protótipo}
 \label{metod:end-node:2-proto}
+O objetivo na construção deste protótipo é construir um dispositivo com um tamanho reduzido e melhorar sua eficiência energética, visando o seu funcionamento por meses com apenas uma pequena bateria. Para conseguir alcançar tais metas, é preciso remover as partes desnecessárias para o funcionamento da aplicação pelo Arduino. Pegando apenas os componentes essenciais, microcontrolador Atmega328, transceptor LoRa RFM95W e o sensor DHT-22, junto com alguns componentes de suporte para fornecer o funcionamento correto, um capacitor de cerâmica de 100pF, dois resistores de 10k  e um circuito para fornecer o clock para o microcontrolador composto por um cristal oscilador de 16mhz e dois capacitores de cerâmica de 22pF. Tal circuito, como pode ser visto na figura \ref{fig:end-node-proto-2}, foi montado em uma protoboard junto com um conversor USB para serial, para ser possível ver os logs do dispositivo pelo computador.
 
 \begin{figure}[H]
   \centering
@@ -57,6 +58,11 @@ Ele coleta os dando utilizando o sensor DHT-22, formata os dados em uma string e
   \caption{Foto do segundo protótipo (autoral).}
   \label{fig:end-node-proto-2} 
 \end{figure}
+
+% ---
+\subsection{Escolha da Bateria}
+\label{metod:end-node:bateria}
+
 
 % ---
 \section{Gateway}
