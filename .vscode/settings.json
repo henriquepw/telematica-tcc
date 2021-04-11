@@ -17,6 +17,8 @@
     "**/*.ilg": true,
     "**/*.ind": true,
     "**/*.log": true,
+    "**/*.lof": true,
+    "**/*.lot": true,
     "**/*.synctex.gz": true,
     "**/*.toc": true
   }
