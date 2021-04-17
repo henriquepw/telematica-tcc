@@ -50,13 +50,21 @@ Ele coleta os dando utilizando o sensor DHT-22, formata os dados em uma string e
 % ---
 \subsection{Segundo Protótipo}
 \label{metod:end-node:2-proto}
-O objetivo na construção deste protótipo é construir um dispositivo com um tamanho reduzido e melhorar sua eficiência energética, visando o seu funcionamento por meses com apenas uma pequena bateria. Para conseguir alcançar tais metas, é preciso remover as partes desnecessárias para o funcionamento da aplicação pelo Arduino. Pegando apenas os componentes essenciais, microcontrolador Atmega328, transceptor LoRa RFM95W e o sensor DHT-22, junto com alguns componentes de suporte para fornecer o funcionamento correto, um capacitor de cerâmica de 100pF, dois resistores de 10k Ohms  e um circuito para fornecer o clock para o microcontrolador composto por um cristal oscilador de 16mhz e dois capacitores de cerâmica de 22pF. Tal circuito, como pode ser visto na figura \ref{fig:end-node-proto-2}, foi montado em uma protoboard junto com um conversor USB para serial, para ser possível ver os logs do dispositivo pelo computador.
+O objetivo na construção deste protótipo é construir um dispositivo com um tamanho reduzido e melhorar sua eficiência energética, visando o seu funcionamento por meses com apenas uma pequena bateria. Para conseguir alcançar tais metas, é preciso remover as partes desnecessárias para o funcionamento da aplicação pelo Arduino. Pegando apenas os componentes essenciais, microcontrolador Atmega328, transceptor LoRa RFM95W e o sensor DHT-22, junto com alguns componentes de suporte para fornecer o funcionamento correto, um capacitor de cerâmica de 100pF, dois resistores de 10k Ohms  e um circuito para fornecer o clock para o microcontrolador composto por um cristal oscilador de 16mhz e dois capacitores de cerâmica de 22pF. Tal circuito, como pode ser visto na figura \ref{fig:end-node-proto-2} e seu esquemático na figura \ref{fig:end-node-proto-2-schematic}, foi montado em uma protoboard junto com um conversor USB para serial, para ser possível ver os logs do dispositivo pelo computador.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=.80\textwidth]{assets/end-node-proto-2.png} 
   \caption{Foto do segundo protótipo (autoral).}
   \label{fig:end-node-proto-2} 
+\end{figure}
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.80\textwidth]{assets/end-node-proto-2-schematic.png} 
+  \caption{Esquemático do segundo protótipo (autoral).}
+  \label{fig:end-node-proto-2-schematic} 
 \end{figure}
 
 % ---
