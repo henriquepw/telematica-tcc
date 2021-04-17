@@ -48,7 +48,7 @@ Pensando nesse cenário, esse trabalho apresenta uma alternativa para melhorar a
 
 \subsection{Objetivo Geral}
 \label{intro:objetivos:geral}
-Construir uma arquitetura baseada em conceitos de IoT visando o monitoramento de temperatura e umidade de imunobiológicos para auxiliar funcionários da saúde, garantindo melhores condições para a vacinação da população frente a incidência de doenças.
+Construir uma solução baseada em conceitos de IoT visando o monitoramento de temperatura e umidade de imunobiológicos para auxiliar funcionários da saúde, garantindo melhores condições para a vacinação da população frente a incidência de doenças.
 
 \subsection{Objetivos Específicos}
 \label{intro:objetivos:especificos}
@@ -58,6 +58,19 @@ Construir uma arquitetura baseada em conceitos de IoT visando o monitoramento de
   \item Desenvolver um aplicativo móvel para fornecer uma interface amigável para os usuários, auxiliando no controle de qualidade dos produtos.
   \item Realizar testes e análises dos dados transmitidos a fim de garantir a confiabilidade das temperaturas e umidade coletadas.
 \end{itemize}
+
+% ---
+\section{Trabalhos Relacionados}
+\label{fund:trabalhos-relacionados}
+Estudantes do Instituto Federal da Bahia desenvolveram uma pesquisa \cite{cruzdesenvolvimento} sobre diferentes métodos de construção de um sensor de temperatura de baixo custo voltado para o monitoramento de vacinas, pois a temperatura é uma das variantes de grande importância no  processo de conservação de materiais imunobiológicos.
+
+No estudo \cite{lima2019controle}, foi desenvolvido um produto de monitoramento de temperaturas de caixas térmicas usadas no transporte de materiais termolábeis, com o  objetivo de alertar os transportadores de quando a condição de armazenagem estiver fora da faixa ideal, disposdo de sinais auditivos e visíveis. No seu protótipo foi utilizado uma tela LCD para visualizar a temperatura atual, um led vermelho e outro verde para informar visivelmente sobre a condição do ambiente, um sensor de temperatura DS18B20, para coletar os dados necessários e um Arduíno Uno R3, como controlador dos equipamentos.
+
+Em \cite{kersbaum2019monitoramento}, um estudo similar ao citado posteriormente, foi construído um dispositivo de baixo custo para o monitoramento de temperaturas voltado para geladeiras domésticas que armazenam vacinas em municípios do Brasil de pequeno porte, pois possuem baixa quantidade de insumo que consequentemente, seus ambientes de armazenagem de materiais termolábeis são precários, possuindo poucas câmeras específicas para armazenagem deste tipo de material, que acabam utilizando geladeiras domésticas. Seu protótipo é composto por um Arduino conectado a uma célula de Peltier, refrigerado por ventoinhas acoplado em uma caixa de isopor, os dados da temperatura são coletados pelo Arduino e enviado para um computador onde pode ser visualizado por um web site e armazenado em uma planilha excel.
+
+Na dissertação de Mestrado de Lopes Neto \cite{lopes2019monitoramento}, foi desenvolvido uma plataforma em Arduino para transmissão de dados de temperatura do interior dos ambientes gerais de conservação de materiais sensíveis à temperatura, transmitido via SMS e GPRS para uma central onde é armazenado os dados para consultas posteriores.
+
+Tendo em vista as pesquisas mencionadas acima, venho através deste trabalho, contribuir para uma solução mais completa, do hardware ao cliente final, de baixo custo e energeticamente eficaz, utilizando tecnologias modernas e escaláveis, com o intuito de auxiliar os profissionais da saúde no controle dos imunobiológicos.
 
 % ---
 % \section{Metodologia}

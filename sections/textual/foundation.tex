@@ -7,18 +7,12 @@ Neste capítulo serão abordados os principais conceitos e tecnologias utilizada
 \label{fund:iot}
 Com o intuito de ampliar a internet atual, interligando os objetos do nosso cotidiano, animais e humanos em uma única rede, foi criado a Internet das Coisas, IoT, também conhecida como internet de todas as coisas. Para tal, os objetos viram objetos inteligentes, possuindo capacidade de comunicação associados com sensores que fornecem dados para outros dispositivos. Estes aparelhos, conectados a IoT, se comunicam via internet, trocando dados em tempo real, transmitindo informações acerca do ambiente que estão inseridos e/ou até mesmo dos seus respectivos estados. 
 
-Deste modo, é adicionanda uma nova gama de possibilidades, trazendo grandes benefícios para ambientes domésticos, mas principalmente para a área industrial. No primeiro caso, aplicações, tais como: aprendizagem reforçada, monitoramento e vigilância inteligentes e vida assistida, têm despontado entre aquelas que mais chamam atenção, tanto dos usuários, como das empresas de desenvolvimento de soluções tecnológicas. No segundo caso, IoT se apresenta como um diferencial competitivo importante em campos, com a automação e manufatura industrial, logística, gestão de processos de negócio, etc.
+Deste modo, é adicionada uma nova gama de possibilidades, trazendo grandes benefícios para ambientes domésticos, mas principalmente para a área industrial. No primeiro caso, aplicações, tais como: aprendizagem reforçada, monitoramento e vigilância inteligentes e vida assistida, têm despontado entre aquelas que mais chamam atenção, tanto dos usuários, como das empresas de desenvolvimento de soluções tecnológicas. No segundo caso, IoT se apresenta como um diferencial competitivo importante em campos, com a automação e manufatura industrial, logística, gestão de processos de negócio, entre outros.
 
 Do ponto de vista da produtividade, IoT apresenta-se como um importante meio pelo qual pode-se desenvolver aplicações sofisticadas que podem integrar o mundo real e o mundo virtual. Em empresas de manufatura, produtos conectados permitem a existência de um ambiente de serviços e produtos no qual a manutenção pode ser realizada com base na necessidade real, em vez de uma suposição estatística. Adicionalmente, produtos e máquinas conectados podem receber atualizações de software quando disponíveis, para garantir que estejam sempre funcionando em eficiência ótima.
 
-% ---
-\section{Protocolos de Comunicação}
-\label{fund:protocolos}
-Protocolos de comunicação são conjuntos de normas que definem uma forma de troca de mensagens entre dois ou mais dispositivos em um determinado meio físico. Os meios mais comuns são por cabos de materiais condutores e pelo ar, transmitindo ondas eletromagnéticas. Na IoT o que se predomina é por meio sem fio (\textit{wireless}). Neste projeto, foram utilizados dois protocolos de comunicações, o LoRaWAN e o HTTP.
+Entretanto, a IoT enfrenta grandes desafios na sua implantação, tanto na transmissão de dados quanto na autonomia energética. No ambiente residencial, paredes e dispositivos eletrônicos se tornam obstáculos para os dispositivos da IoT, na área industrial, esses empecilhos são mais presentes, devido a grande concentração de equipamentos metálicos. Outros problemas, fora os causados pelo ambiente, são devido a grande concentração de tais dispositivos transmitindo simultaneamente, que podem acabar gerando interferência. Ademais, há um grande número de dispositivos que não podem ficar conectados na energia elétrica por cabos, por razões variadas, e, graças a sua quantidade, é preciso que  durem por um grande período de tempo com a mesma fonte de energia para tornarem-se viáveis, pois, gerenciar as baterias usadas por inúmeros dispositivos em uma grande frequência, acaba sendo custoso. Tendo esses pontos em mente, algumas tecnologias foram criadas para tal finalidade, entre elas uma das que mais se destacam é a LoRa.
 
-% ----
-\subsection{LoRa}
-\label{fund:lora}
 A tecnologia Long Range, LoRa, é uma forma de comunicação sem fio, semelhante ao Wi-Fi e ao Bluetooth, que permite um longo alcance de comunicação com baixo custo. O raio de comunicação sem fio utilizando o LoRa, dependendo do dispositivo selecionado, pode alcançar quilômetros de distância.
 
 Embora o LoRa tenha sido fundamentalmente desenvolvido pela Semtech Corporation, seu padrão imposto pelo LoRa permitiu que muitas empresas a utilizassem para diversos projetos com um custo benefício satisfatório, aumentando o ecossistema e ganhando um envolvimento significativamente maior, uma variedade superior de produtos e um acréscimo geral no uso e aceitação. 
@@ -33,27 +27,27 @@ O LoRa em si diz respeito à camada física, sendo a camada lógica chamada de L
 \end{figure}
 
 % ----
-\subsection{HTTP/HTTPS}
-\label{fund:http}
-Inicialmente utilizado pelo \textit{World-Wide Web}, WWW, em 1990, como o protocolo base da internet por ser um protocolo leve e rápido para transmissão de informações em sistemas distribuídos, o \textit{Hypertext Transfer Protocol}, HTTP, é um protocolo que transmite documentos de diversos formatos através de sistemas distribuídos, mais conhecido pela sua disseminação pela internet \cite{berners1996hypertext}. Quatro anos depois, em 1994, a Netscape Communications criou o HTTPS, uma implementação do HTTP adicionando uma nova camada, a de segurança, utilizando-se do protocolo SSL/TLS, um protocolo que fornece segurança entre comunicações sobre rede de computadores.
+% \subsection{HTTP/HTTPS}
+% \label{fund:http}
+% Inicialmente utilizado pelo \textit{World-Wide Web}, WWW, em 1990, como o protocolo base da internet por ser um protocolo leve e rápido para transmissão de informações em sistemas distribuídos, o \textit{Hypertext Transfer Protocol}, HTTP, é um protocolo que transmite documentos de diversos formatos através de sistemas distribuídos, mais conhecido pela sua disseminação pela internet \cite{berners1996hypertext}. Quatro anos depois, em 1994, a Netscape Communications criou o HTTPS, uma implementação do HTTP adicionando uma nova camada, a de segurança, utilizando-se do protocolo SSL/TLS, um protocolo que fornece segurança entre comunicações sobre rede de computadores.
 
-O HTTP funciona baseado no paradigma de cliente e servidor, onde o cliente estabelece uma conexão fazendo uma requisição solicitando algo ao servidor, e o servidor, por sua vez, o responde enviando uma mensagem.  Tais requisições possuem um método atrelado a ele, esses métodos são usados semanticamente, com o objetivo de organizar e dividir suas responsabilidades, os métodos mais utilizados são: GET, POST, PUT e DELETE. o GET é usado quando o cliente solicita dados ao servidor, o POST quando o cliente quer enviar alguma nova informação, o PUT é semelhante ao POST, entretanto, é referente a atualização de um dado existente e o DELETE é uma requisição pedindo a remoção de uma determinada informação \cite{mozilla2019http}.
+% O HTTP funciona baseado no paradigma de cliente e servidor, onde o cliente estabelece uma conexão fazendo uma requisição solicitando algo ao servidor, e o servidor, por sua vez, o responde enviando uma mensagem.  Tais requisições possuem um método atrelado a ele, esses métodos são usados semanticamente, com o objetivo de organizar e dividir suas responsabilidades, os métodos mais utilizados são: GET, POST, PUT e DELETE. o GET é usado quando o cliente solicita dados ao servidor, o POST quando o cliente quer enviar alguma nova informação, o PUT é semelhante ao POST, entretanto, é referente a atualização de um dado existente e o DELETE é uma requisição pedindo a remoção de uma determinada informação \cite{mozilla2019http}.
 
-Essas mensagens que transitam entre clientes e servidores são compostas por linhas de textos divididas em três blocos como pode ser visto na figura \ref{fig:post-request}. O primeiro bloco consiste em uma linha com o método da requisição, a url, ou seja, o caminho do documento seguido pela a versão do protocolo; o segundo bloco é referente ao cabeçalho HTTP, responsável por fornecer informações e metadados ao servidor, como o tipo de dado transitado ou dados que alteram seu comportamento; o terceiro bloco diz respeito ao bloco de dados. Este bloco é opcional, dependendo do tipo de requisição realizada, mais utilizado pelos métodos POST e PUT.
+% Essas mensagens que transitam entre clientes e servidores são compostas por linhas de textos divididas em três blocos como pode ser visto na figura \ref{fig:post-request}. O primeiro bloco consiste em uma linha com o método da requisição, a url, ou seja, o caminho do documento seguido pela a versão do protocolo; o segundo bloco é referente ao cabeçalho HTTP, responsável por fornecer informações e metadados ao servidor, como o tipo de dado transitado ou dados que alteram seu comportamento; o terceiro bloco diz respeito ao bloco de dados. Este bloco é opcional, dependendo do tipo de requisição realizada, mais utilizado pelos métodos POST e PUT.
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=.80\textwidth]{assets/post-request.png} 
-  \caption{Exemplo de uma requisição POST (Retirado de \cite{mozilla2019http}).}
-  \label{fig:post-request} 
-\end{figure}
+% \begin{figure}[H]
+%   \centering
+%   \includegraphics[width=.80\textwidth]{assets/post-request.png} 
+%   \caption{Exemplo de uma requisição POST (Retirado de \cite{mozilla2019http}).}
+%   \label{fig:post-request} 
+% \end{figure}
 
 % ---
-\section{Plataformas de Prototipagem}
-\label{fund:plataforma-proto}
-Plataformas de prototipagem eletrônica são formas facilitadas de desenvolver um protótipo inicial de determinado projeto. Uma das plataformas de prototipagem existentes mais famosa é o Arduino, uma plataforma de código aberto criada em 2005 na Itália pelo professor Massimo Banzi, que tinha como objetivo, ensinar eletrônica e programação para seus alunos, provendo uma forma acessível e de fácil uso. O Arduino possui seu próprio ambiente de desenvolvimento de mesmo nome, utilizando de sua linguagem de programação baseada em C.
+% \section{Plataformas de Prototipagem}
+% \label{fund:plataforma-proto}
+% Plataformas de prototipagem eletrônica são formas facilitadas de desenvolver um protótipo inicial de determinado projeto. Uma das plataformas de prototipagem existentes mais famosa é o Arduino, uma plataforma de código aberto criada em 2005 na Itália pelo professor Massimo Banzi, que tinha como objetivo, ensinar eletrônica e programação para seus alunos, provendo uma forma acessível e de fácil uso. O Arduino possui seu próprio ambiente de desenvolvimento de mesmo nome, utilizando de sua linguagem de programação baseada em C.
 
-Outra plataforma bem conhecida é a família de microcontroladores ESP, e assim como suas concorrentes, oferece módulos de baixo custo e versáteis para várias soluções tecnológicas, dos quais destacam-se a série ESP32. Tal série, acabou sendo mais conhecida pelas suas variações de modelos feitas por empresas distintas, cada modelo possuindo seus diferenciais, como por exemplo o modelo da Heltec Automation, que inclui conectividades com WiFi, bluetooth e LoRa.
+% Outra plataforma bem conhecida é a família de microcontroladores ESP, e assim como suas concorrentes, oferece módulos de baixo custo e versáteis para várias soluções tecnológicas, dos quais destacam-se a série ESP32. Tal série, acabou sendo mais conhecida pelas suas variações de modelos feitas por empresas distintas, cada modelo possuindo seus diferenciais, como por exemplo o modelo da Heltec Automation, que inclui conectividades com WiFi, bluetooth e LoRa.
 
 % ---
 \section{Sensor DHT-22}
@@ -146,14 +140,3 @@ O React Native é um \textit{framework} para desenvolvimento nativo voltado para
 O React Native utiliza a linguagem JavaScript como principal e a renderiza para código nativo, para isso é adicionado uma camada em JavaScript, chamada de \textit{Bridge} que se comunica com o sistema operacional, mandando comandos para renderizar os componentes nativos \cite{docreactnative}.
 
 % ---
-\section{Trabalhos Relacionados}
-\label{fund:trabalhos-relacionados}
-Estudantes do Instituto Federal da Bahia desenvolveram uma pesquisa \cite{cruzdesenvolvimento} sobre diferentes métodos de construção de um sensor de temperatura de baixo custo voltado para o monitoramento de vacinas, pois a temperatura é uma das variantes de grande importância no  processo de conservação de materiais imunobiológicos.
-
-No estudo \cite{lima2019controle}, foi desenvolvido um produto de monitoramento de temperaturas de caixas térmicas usadas no transporte de materiais termolábeis, com o  objetivo de alertar os transportadores de quando a condição de armazenagem estiver fora da faixa ideal, disposdo de sinais auditivos e visíveis. No seu protótipo foi utilizado uma tela LCD para visualizar a temperatura atual, um led vermelho e outro verde para informar visivelmente sobre a condição do ambiente, um sensor de temperatura DS18B20, para coletar os dados necessários e um Arduíno Uno R3, como controlador dos equipamentos.
-
-Em \cite{kersbaum2019monitoramento}, um estudo similar ao citado posteriormente, foi construído um dispositivo de baixo custo para o monitoramento de temperaturas voltado para geladeiras domésticas que armazenam vacinas em municípios do Brasil de pequeno porte, pois possuem baixa quantidade de insumo que consequentemente, seus ambientes de armazenagem de materiais termolábeis são precários, possuindo poucas câmeras específicas para armazenagem deste tipo de material, que acabam utilizando geladeiras domésticas. Seu protótipo é composto por um Arduino conectado a uma célula de Peltier, refrigerado por ventoinhas acoplado em uma caixa de isopor, os dados da temperatura são coletados pelo Arduino e enviado para um computador onde pode ser visualizado por um web site e armazenado em uma planilha excel.
-
-Na dissertação de Mestrado de Lopes Neto \cite{lopes2019monitoramento}, foi desenvolvido uma plataforma em Arduino para transmissão de dados de temperatura do interior dos ambientes gerais de conservação de materiais sensíveis à temperatura, transmitido via SMS e GPRS para uma central onde é armazenado os dados para consultas posteriores.
-
-Tendo em vista as pesquisas mencionadas acima, venho através deste trabalho, contribuir para uma solução mais completa, de baixo custo e energeticamente eficaz, utilizando tecnologias modernas e escaláveis, com o intuito de auxiliar os profissionais da saúde no controle dos imunobiológicos.
