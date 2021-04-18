@@ -14,25 +14,35 @@ Foi executado um teste de transmissão de pacotes com o objetivo de verificar a 
   \label{fig:experiment-01} 
 \end{figure}
 
-Os dispositivos ficaram funcionando por alguns dias, 24 horas por dias, realizando envios contínuos de pacotes em intervalos de cinco minutos. O gráfico na figura \ref{fig:21-04-2020-pdr-rssi} apresenta a taxa de entrega de pacote, PDR, por horas, das coletas realizadas no dia 21 de abril de 2020. A média geral da PDR foi de 78,82\%, um valor agradável, no entanto, em alguns momentos a PDR ficou em torno de 20\%, o que pode ter sido ocasionado por modificações no perfil de multi-percurso do ambiente, obstáculos temporários ou presença de fontes de interferência. Considerando a taxa de transmissão de pacote utilizada, com PDR de 20\% ainda é possível obter uma nova informação a cada 25 minutos, em média, o que é suficiente para a realização do monitoramento de temperatura e umidade, que são grandezas que variam lentamente.
+Os dispositivos ficaram funcionando por alguns dias, 24 horas por dia, realizando envios contínuos de pacotes em intervalos de cinco minutos. O gráfico na figura \ref{fig:21-04-2020-pdr-rssi} apresenta a taxa de entrega de pacote, PDR, por horas, das coletas realizadas no dia 21 de abril de 2020. A média geral da PDR foi de 78,82\%, um valor agradável, no entanto, em alguns momentos a PDR ficou em torno de 20\%, o que pode ter sido ocasionado por modificações no perfil de multi-percurso do ambiente, obstáculos temporários ou presença de fontes de interferência. Considerando a taxa de transmissão de pacote utilizada, com PDR de 20\% ainda é possível obter uma nova informação a cada 25 minutos, em média, o que é suficiente para a realização do monitoramento de temperatura e umidade, que são grandezas que variam lentamente.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=.80\textwidth]{assets/21-04-2020-pdr-rssi.png} 
-  \caption{Percentual de entrega dos pacotes em barras e indicador de intensidade do sinal recebido em linha. (Autoral).}
+  \caption{Percentual de entrega dos pacotes em barras e indicador de intensidade do sinal recebido em linha (Autoral).}
   \label{fig:21-04-2020-pdr-rssi} 
 \end{figure}
 
 % ---
 \section{Análise do Consumo Energético}
 \label{result:consumo}
-\todo{preciso de um multímetro para medir o consumo}
+É possível estimar o tempo de duração do \textit{end node} com a bateria escolhida, dividindo a capacidade da bateria pelo consumo de energia médio do dispositivo, e para saber o consumo médio do \textit{node}, precisamos saber o valor do consumo em dois pontos, quando estiver realizando a transmissão de um pacote, quando estiver em período de espera para a próxima transmissão e o tempo de duração de cada período.
+
+O período de coleta que consideramos ser o suficiente para gerar uma boa monitoração é de uma hora e o LoRa demora em torno de 42 ms para realizar uma transmissão de um pacote. Podemos ver na figura \ref{fig:end-node-consumption-chart}, o gráfico mostrando os valores do período de transmissão dos dois protótipos, para comparação. Podemos ver, o consumo em espera e quando está realizando uma transmissão, respectivamente, para o primeiro protótipo, temos 50 ms e 150ms, já para o segundo protótipo, temos valores menores, \todo{18 ms e 118 ms}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.80\textwidth]{assets/end-node-consumption-chart.png} 
+  \caption{Gráfico de consumo dos protótipos do \textit{end node} (Autoral).}
+  \label{fig:end-node-consumption-chart} 
+\end{figure}
+
 % ---
 \section{Análise do Custo}
 \label{result:custo}
-Todas as compras dos equipamentos foram realizadas no Brasil e em baixa quantidade, o que acaba deixando o protótipo mais caro comparado a compra realizada na China ou comprando em grande escala, que acaba tendo uma redução considerável do seu custo. Tendo isto em mente, podemos analisar a tabela X, representando o custo (sem consideração do frete), da cada peça encontrada no Brasil e na China para montar o segundo protótipo do \textit{end node} apresentado na sessão \ref{metod:end-node:2-proto}. Os dados da tabela foram preenchidos com os menores valores encontrados no dia 11 de abril de 2021 considerando os revendedores mais confiáveis. Temos então, um total de R\$ 97,66 comprando localmente e R\$ 48,40 exportando que dá em torno de 49,56\% a menos comprando no Brasil, tornando assim um melhor custo benefício.	Já para o \textit{gateway}, o preço no Brasil fica em torno de R\$  180,00 e exportando pode ser encontrado por menos de R\$  100,00.
+Todas as compras dos equipamentos foram realizadas no Brasil e em baixa quantidade, o que acaba deixando o protótipo mais caro comparado a compra realizada na China ou comprando em grande escala, que acaba tendo uma redução considerável do seu custo. Tendo isto em mente, podemos analisar a tabela \ref{tab:costs-2-proto}, representando o custo (sem consideração do frete), da cada peça encontrada no Brasil e na China para montar o segundo protótipo do \textit{end node} apresentado na sessão \ref{metod:end-node:2-proto}. Os dados da tabela foram preenchidos com os menores valores encontrados no dia 11 de abril de 2021 considerando os revendedores mais confiáveis. Temos então, um total de R\$ 97,66 comprando localmente e R\$ 48,40 exportando que dá em torno de 49,56\% a menos comprando na China, tornando assim um melhor custo benefício.	Já para o \textit{gateway}, o preço no Brasil fica em torno de R\$  180,00 e exportando pode ser encontrado por menos de R\$  100,00.
 
-Considerando que, ao utilizar um produto deste porte, não será mais necessário a compra de câmeras conservadoras com monitoração,  que pode chegar a custar R\$ 10.000,00, podendo assim, economizar até R\$ 7.000,00 por Refrigerador, Tornando o nosso produto viável financeiramente para as empresas.
+Considerando que, ao utilizar um produto deste porte, não será mais necessário a compra de câmeras conservadoras com monitoração,  que pode chegar a custar R\$ 10.000,00, podendo assim, economizar até R\$ 7.000,00 por refrigerador, tornando o nosso produto viável financeiramente para as empresas.
 
 \begin{table}[H]
   \centering 
