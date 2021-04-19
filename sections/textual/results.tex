@@ -28,7 +28,7 @@ Os dispositivos ficaram funcionando por alguns dias, 24 horas por dia, realizand
 \label{result:consumo}
 É possível estimar o tempo de duração do \textit{end node} com a bateria escolhida, dividindo a capacidade da bateria pelo consumo de energia médio do dispositivo, e para saber o consumo médio do \textit{node}, precisamos saber o valor do consumo em dois pontos, quando estiver realizando a transmissão de um pacote, quando estiver em período de espera para a próxima transmissão e o tempo de duração de cada período.
 
-O período de coleta que consideramos ser o suficiente para gerar uma boa monitoração é de uma hora e o LoRa demora em torno de 42 ms para realizar uma transmissão de um pacote. Podemos ver na figura \ref{fig:end-node-consumption-chart}, o gráfico mostrando os valores do período de transmissão dos dois protótipos, para comparação. Podemos ver, o consumo em espera e quando está realizando uma transmissão, respectivamente, para o primeiro protótipo, temos 50 ms e 150ms, já para o segundo protótipo, temos valores menores, \todo{18 ms e 118 ms}.
+O período de coleta que consideramos ser o suficiente para gerar uma boa monitoração é de uma hora e o LoRa demora em torno de 42 ms para realizar uma transmissão de um pacote. Podemos ver na figura \ref{fig:end-node-consumption-chart}, o gráfico mostrando os valores do período de transmissão dos dois protótipos, para comparação. Podemos ver, o consumo em espera e quando está realizando uma transmissão, respectivamente, para o primeiro protótipo, temos 50 ms e 150ms, já para o segundo protótipo, temos valores menores, 18 ms e 118 ms.
 
 \begin{figure}[H]
   \centering
@@ -36,6 +36,30 @@ O período de coleta que consideramos ser o suficiente para gerar uma boa monito
   \caption{Gráfico de consumo dos protótipos do \textit{end node} (Autoral).}
   \label{fig:end-node-consumption-chart} 
 \end{figure}
+
+Com esses dados, é possível calcular a corrente média somando os valores de medida multiplicados pelas suas porcentagens referentes ao tempo total. O tempo total do período equivale a 3600,042 s, que corresponde à soma do tempo em transmissão, 42 ms, com o tempo em espera, 3600 s. Temos então 56.0010904 mA para o primeiro protótipo e 18.00116 mA para o segundo, como é possível ver nas equaçòes \ref{equation:p1-consumption} e \ref{equation:p2-consumption}, respectivamente.
+
+\begin{equation}
+  (0,9999884 * 56 mA) + (0,0000116 * 150 mA) = 56,0010904 mA
+  \label{equation:p1-consumption} 
+\end{equation}
+
+\begin{equation}
+  (0,9999884 * 18 mA) + (0,0000116 * 118 mA) = 18,00116 mA
+  \label{equation:p2-consumption} 
+\end{equation}
+
+Agora, com essas dados, podemos calcular a duração teórica dos protótipos  para uma bateria, no nosso caso a 18650, com 2200 mAh, que é aproximadamente 39 horas para o primeiro protótipo e 122 horas para o segundo protótipo, como mostra nas equações \ref{equation:p1-hours} e \ref{equation:p2-hours}.
+
+\begin{equation}
+  \frac{2200 mAh}{56,0010904 mA} = 39,2849494 h
+  \label{equation:p1-hours} 
+\end{equation}
+
+\begin{equation}
+  \frac{2200 mAh}{18,00116 mA} = 122,214346 h
+  \label{equation:p2-hours} 
+\end{equation}
 
 % ---
 \section{Análise do Custo}
