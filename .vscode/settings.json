@@ -19,6 +19,9 @@
     "**/*.log": true,
     "**/*.lof": true,
     "**/*.lot": true,
+    "**/*.nav": true,
+    "**/*.out": true,
+    "**/*.snm": true,
     "**/*.synctex.gz": true,
     "**/*.toc": true
   }
