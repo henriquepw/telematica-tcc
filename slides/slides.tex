@@ -20,7 +20,7 @@
 ]{babel}
 
 \title{Sistema de Monitoramento de Qualidade de Imunobiológicos na Cadeia de Distribuição e Armazenamento}
-\subtitle{Henrique M. Miranda}
+\subtitle{Henrique Martins Miranda}
 \author{Orientador: Paulo Ribeiro Lins Junior}
 
 \usepackage{ragged2e}  % `\justifying` text
@@ -42,6 +42,47 @@
   \include{./sections/method.tex}
   \include{./sections/results.tex}
   \include{./sections/conclusion.tex}
+
+  \begin{frame}
+    \vskip 1cm
+    \usebeamerfont{title}%
+    \usebeamercolor[fg]{title}%
+    \vskip 0.5cm
+    \raggedright Obrigado!
+    \vskip-.5\baselineskip
+    \begin{pgfpicture}
+      \pgfsetlinewidth{2pt}
+      \pgfsetroundcap
+      \pgfsetdash{{0pt}{4pt}}{0cm}
+
+      \pgfpathmoveto{\pgfpoint{0mm}{0mm}}
+      \pgfpathlineto{\pgfpoint{\textwidth}{0mm}}
+
+      \pgfusepath{stroke}
+    \end{pgfpicture}
+
+    % Input the subtitle
+    \usebeamerfont{subtitle}%
+    \usebeamercolor[fg]{subtitle}%
+    \begin{minipage}{\textwidth}
+      \raggedright%
+      Henrique Martins Miranda%
+    \end{minipage}\vskip0.25\baselineskip
+
+    % Input the author's name
+    \usebeamerfont{author}%
+    \usebeamercolor[fg]{author}%
+
+    \raggedright%
+    Orientador: Paulo Ribeiro Lins Junior
+    \vskip 1cm
+
+    \begin{tikzpicture}[overlay, remember picture]
+      \node[anchor=west,xshift=20pt,yshift=-85pt] at (current page.west) {
+        \includegraphics[height=23mm]{./assets/ifpb-logo.png}
+      };
+    \end{tikzpicture}
+  \end{frame}
 \end{darkframes}
 
 \end{document}
