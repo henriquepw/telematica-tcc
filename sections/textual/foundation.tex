@@ -26,28 +26,7 @@ O LoRa em si diz respeito à camada física, sendo a camada lógica chamada de L
   \label{fig:end-nodes-gateways} 
 \end{figure}
 
-% ----
-% \subsection{HTTP/HTTPS}
-% \label{fund:http}
-% Inicialmente utilizado pelo \textit{World-Wide Web}, WWW, em 1990, como o protocolo base da internet por ser um protocolo leve e rápido para transmissão de informações em sistemas distribuídos, o \textit{Hypertext Transfer Protocol}, HTTP, é um protocolo que transmite documentos de diversos formatos através de sistemas distribuídos, mais conhecido pela sua disseminação pela internet \cite{berners1996hypertext}. Quatro anos depois, em 1994, a Netscape Communications criou o HTTPS, uma implementação do HTTP adicionando uma nova camada, a de segurança, utilizando-se do protocolo SSL/TLS, um protocolo que fornece segurança entre comunicações sobre rede de computadores.
-
-% O HTTP funciona baseado no paradigma de cliente e servidor, onde o cliente estabelece uma conexão fazendo uma requisição solicitando algo ao servidor, e o servidor, por sua vez, o responde enviando uma mensagem.  Tais requisições possuem um método atrelado a ele, esses métodos são usados semanticamente, com o objetivo de organizar e dividir suas responsabilidades, os métodos mais utilizados são: GET, POST, PUT e DELETE. o GET é usado quando o cliente solicita dados ao servidor, o POST quando o cliente quer enviar alguma nova informação, o PUT é semelhante ao POST, entretanto, é referente a atualização de um dado existente e o DELETE é uma requisição pedindo a remoção de uma determinada informação \cite{mozilla2019http}.
-
-% Essas mensagens que transitam entre clientes e servidores são compostas por linhas de textos divididas em três blocos como pode ser visto na figura \ref{fig:post-request}. O primeiro bloco consiste em uma linha com o método da requisição, a url, ou seja, o caminho do documento seguido pela a versão do protocolo; o segundo bloco é referente ao cabeçalho HTTP, responsável por fornecer informações e metadados ao servidor, como o tipo de dado transitado ou dados que alteram seu comportamento; o terceiro bloco diz respeito ao bloco de dados. Este bloco é opcional, dependendo do tipo de requisição realizada, mais utilizado pelos métodos POST e PUT.
-
-% \begin{figure}[H]
-%   \centering
-%   \includegraphics[width=.80\textwidth]{assets/post-request.png} 
-%   \caption{Exemplo de uma requisição POST (Retirado de \cite{mozilla2019http}).}
-%   \label{fig:post-request} 
-% \end{figure}
-
-% ---
-% \section{Plataformas de Prototipagem}
-% \label{fund:plataforma-proto}
-% Plataformas de prototipagem eletrônica são formas facilitadas de desenvolver um protótipo inicial de determinado projeto. Uma das plataformas de prototipagem existentes mais famosa é o Arduino, uma plataforma de código aberto criada em 2005 na Itália pelo professor Massimo Banzi, que tinha como objetivo, ensinar eletrônica e programação para seus alunos, provendo uma forma acessível e de fácil uso. O Arduino possui seu próprio ambiente de desenvolvimento de mesmo nome, utilizando de sua linguagem de programação baseada em C.
-
-% Outra plataforma bem conhecida é a família de microcontroladores ESP, e assim como suas concorrentes, oferece módulos de baixo custo e versáteis para várias soluções tecnológicas, dos quais destacam-se a série ESP32. Tal série, acabou sendo mais conhecida pelas suas variações de modelos feitas por empresas distintas, cada modelo possuindo seus diferenciais, como por exemplo o modelo da Heltec Automation, que inclui conectividades com WiFi, bluetooth e LoRa.
+Não apenas para o LoRa, mas para as comunicações sem fios em geral, existem parâmetros que ajudam a analisar a qualidade da transmissão dos dados, dentre eles a o indicador de força do sinal recebido, RSSI, a relação sinal-ruído, SNR e a taxa de entrega de pacotes, PDR, este última, não apenas nas comunicações sem fios, mas nas comunicaçòes em gerais.
 
 % ---
 \section{Sensor DHT-22}
@@ -78,7 +57,7 @@ Um servidor é um sistema de computação centralizada, responsável por fornece
 \label{fund:node}
 Em 2009, Ryan Dahl criou o Node.js ou simplesmente Node, um ambiente de código aberto de execução Javascript para ser utilizado por servidores (\textit{server-side}) baseado no interpretador V8 da Google. O objetivo do Node é fornecer uma forma de criar serviços com alta capacidade de escala, consumindo pouca memória e de fácil aprendizado. Apesar da linguagem de programação Javascript fornecer uma performance inferior às linguagens já existentes para esse objetivo, seu uso oferece dois grande benefícios, ser uma linguagem de fácil aprendizado e de grande uso por ser a linguagem padrão dos navegadores, e consequentemente do desenvolvimento web \cite{tilkov2010node}.
 
-A forma de execução no Node é por eventos assíncronos, diferente da maioria dos outros ambientes modernos que utilizam \textit{threads} do sistema operacional, SO. O Node usa apenas uma thread assíncrona principal que executa operações de entrada e saída de dados, E/S, chamada de \textit{Event Loop}, em português, ciclo de eventos \cite{nodejsAbout}. O \textit{Event Loop} funciona em um ciclo, escutando uma lista de chamadas, onde são armazenadas as requisições recebidas, e as direcionando cada uma para uma Thread a parte, que executará a função recebida, como podemos ver na figura \ref{fig:event-loop-node}. A priori, o  Node possui quatro \textit{threads} trabalhadoras, responsáveis por executar as funções. Entretanto, é possível configurar a quantidade de \textit{threads} usadas, dependendo da máquina, onde está sendo efetuado a instância do Node.
+A forma de execução no Node é por eventos assíncronos, diferente da maioria dos outros ambientes modernos que utilizam \textit{threads} do sistema operacional, SO. O Node usa apenas uma thread assíncrona principal que executa operações de entrada e saída de dados, E/S, chamada de \textit{Event Loop}, em português, ciclo de eventos \cite{nodejsAbout}. O \textit{Event Loop} funciona em um ciclo, escutando uma lista de chamadas, onde são armazenadas as requisições recebidas, e as direcionando cada uma para uma \textit{thread} a parte, que executará a função recebida, como podemos ver na figura \ref{fig:event-loop-node}. A priori, o  Node possui quatro \textit{threads} trabalhadoras, responsáveis por executar as funções. Entretanto, é possível configurar a quantidade de \textit{threads} usadas, dependendo da máquina, onde está sendo efetuado a instância do Node.
 
 \begin{figure}[H]
   \centering
