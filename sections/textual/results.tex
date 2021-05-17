@@ -26,9 +26,11 @@ Os dispositivos ficaram funcionando por cinco dias, 24 horas por dia, realizando
 % ---
 \section{Análise do Consumo Energético}
 \label{result:consumo}
-É possível estimar o tempo de duração do \textit{end node} com a bateria escolhida, dividindo a capacidade da bateria pelo consumo de energia médio do dispositivo, e para saber o consumo médio do \textit{node}, precisamos saber o valor do consumo em dois pontos, quando estiver realizando a transmissão de um pacote,  quando estiver em período de espera para a próxima transmissão e o tempo de duração de cada período. Os dados foram medidos utilizando um multímetro e um osciloscópio. Para a medição com osciloscópio, foi necessário o uso de um resistor de derivação, também conhecido como resistor \textit{shunt}, de 0,1 Ohm, medindo a queda de tensão diferencial através deste resistor.
+É possível estimar o tempo de duração do \textit{end node} com a bateria escolhida, dividindo a capacidade da bateria pelo consumo de energia médio do dispositivo, e para saber o consumo médio do \textit{node}, precisamos saber o valor do consumo em dois pontos, quando estiver realizando a transmissão de um pacote,  quando estiver em período de espera para a próxima transmissão e o tempo de duração de cada período.
 
-O período de coleta que consideramos ser o suficiente para gerar uma boa monitoração é de uma hora e o LoRa demora em torno de 42 ms para realizar uma transmissão de um pacote. Podemos ver na figura \ref{fig:end-node-consumption-chart}, o gráfico mostrando os valores do período de transmissão dos dois protótipos, para comparação. Podemos ver, o consumo em espera e quando está realizando uma transmissão, respectivamente, para o primeiro protótipo, temos 50 ms e 150ms, já para o segundo protótipo, temos valores menores, 18 ms e 118 ms.
+Os dados foram medidos utilizando um multímetro e um osciloscópio, para o primeiro protótipo, entretanto, para o segundo protótipo, devido a dificuldade de acesso aos equipamentos por causa da pandemia do COVID-19, não foi possível realizar a medição de forma manual, e por isso foi utilizado os dados retirados dos \textit{datasheet} dos componentes \todo{add referências}. Para a medição com osciloscópio, foi necessário o uso de um resistor de derivação, também conhecido como resistor \textit{shunt}, de 0,1 Ohm, medindo a queda de tensão diferencial através deste resistor.
+
+O período de coleta que consideramos ser o suficiente para gerar uma boa monitoração é de uma hora e o LoRa demora em torno de 42 ms para realizar uma transmissão de um pacote. Podemos ver na figura \ref{fig:end-node-consumption-chart}, o gráfico mostrando os valores do período de transmissão dos seguintes protótipos para comparação: primeiro protótipo, do segundo protótipo utilizando a função padrão do Arduino, \textit{delay}, e o segundo protótipo em modo \textit{deep sleep} quando estiver em espera, este modo desativa o máximo de funcionalidade do microcontrolador deixa apenas o essencial para voltar ao funcionamento depois de um determinado período. Podemos ver, o consumo em espera e quando está realizando uma transmissão, respectivamente, para o primeiro protótipo, temos 50 ms e 150 ms, já para o segundo protótipo utilizando o\textit{delay}, temos 18 ms e 118 ms e para o segundo protótipo em modo  \textit{deep sleep}, temos os menos valores, com 0.06 ms e 118 ms.
 
 \begin{figure}[H]
   \centering
@@ -37,7 +39,7 @@ O período de coleta que consideramos ser o suficiente para gerar uma boa monito
   \label{fig:end-node-consumption-chart} 
 \end{figure}
 
-Com esses dados, é possível calcular a corrente média somando os valores de medida multiplicados pelas suas porcentagens referentes ao tempo total. O tempo total do período equivale a 3600,042 s, que corresponde à soma do tempo em transmissão, 42 ms, com o tempo em espera, 3600 s. Temos então 56.0010904 mA para o primeiro protótipo e 18.00116 mA para o segundo, como é possível ver nas equaçòes \ref{equation:p1-consumption} e \ref{equation:p2-consumption}, respectivamente.
+Com esses dados, é possível calcular a corrente média somando os valores de medida multiplicados pelas suas porcentagens referentes ao tempo total. O tempo total do período equivale a 3600,042 s, que corresponde à soma do tempo em transmissão, 42 ms, com o tempo em espera, 3600 s. Temos então 56.0010904 mA para o primeiro protótipo, 18.00116 mA para o segundo utilizando \textit{delay} e 0,06136 mA para o segundo em modo \textit{deep sleep}, como é possível ver nas equações \ref{equation:p1-consumption}, \ref{equation:p2-consumption} e \ref{equation:p3-consumption}, respectivamente.
 
 \begin{equation}
   (0,9999884 * 56 mA) + (0,0000116 * 150 mA) = 56,0010904 mA
@@ -49,7 +51,12 @@ Com esses dados, é possível calcular a corrente média somando os valores de m
   \label{equation:p2-consumption} 
 \end{equation}
 
-Agora, com essas dados, podemos calcular a duração teórica dos protótipos  para uma bateria, no nosso caso a 18650, com 2200 mAh, que é aproximadamente 39 horas para o primeiro protótipo e 122 horas para o segundo protótipo, como mostra nas equações \ref{equation:p1-hours} e \ref{equation:p2-hours}.
+\begin{equation}
+  (0,9999884 * 0,06 mA) + (0,0000116 * 118 mA) = 0,06136 mA
+  \label{equation:p3-consumption} 
+\end{equation}
+
+Agora, com esses dados, podemos calcular a duração teórica dos protótipos  para uma bateria, no nosso caso a 18650, com 2200 mAh, que é aproximadamente 39 horas para o primeiro protótipo, 122 horas para o segundo protótipo utilizando \textit{delay} e 35.849 horas para o segundo protótipo utilizando \textit{deep sleep}, como mostra nas equações \ref{equation:p1-hours}, \ref{equation:p2-hours} e \ref{equation:p3-hours}.
 
 \begin{equation}
   \frac{2200 mAh}{56,0010904 mA} = 39,2849494 h
@@ -59,6 +66,11 @@ Agora, com essas dados, podemos calcular a duração teórica dos protótipos  p
 \begin{equation}
   \frac{2200 mAh}{18,00116 mA} = 122,214346 h
   \label{equation:p2-hours} 
+\end{equation}
+
+\begin{equation}
+  \frac{2200 mAh}{0,06136 mA} = 35.849 h
+  \label{equation:p3-hours} 
 \end{equation}
 
 % ---
@@ -75,12 +87,12 @@ Considerando que, ao utilizar um produto deste porte, não será mais necessári
     \textbf{Componente}&\textbf{Preço no Brasil}&\textbf{Preço na China}\\[5pt] \hline
     &&\\
     Um ATmega328&R\$ 19,90&R\$ 9,12 \\[5pt]
-    Um LoRa RFM95W 915Mhz&R\$ 56,00&R\$ 20,99 \\[5pt]
-    Um Bateria 18650 3000mAh&R\$ 19,90 &R\$ 17,65 \\[5pt]
-    Um Cristal Oscilador 16mhz&R\$ 01,47&R\$ 00,46 \\[5pt]
+    Um LoRa RFM95W 915 Mhz&R\$ 56,00&R\$ 20,99 \\[5pt]
+    Um Bateria 18650 3000 mAh&R\$ 19,90 &R\$ 17,65 \\[5pt]
+    Um Cristal Oscilador 1 6mhz&R\$ 01,47&R\$ 00,46 \\[5pt]
     Um Capacitor de cerâmica 100pF&R\$ 00,05&R\$ 00,04 \\[5pt]
     Dois Capacitor de cerâmica 22pF&R\$ 00,22&R\$ 00,08 \\[5pt]
-    Dois Resistores de 10k Ohms&R\$ 00,12&R\$ 00,06 \\
+    Dois Resistores de 10 kOhms&R\$ 00,12&R\$ 00,06 \\
     &&\\ \hline
     &&\\
     \textbf{Total}&R\$ 97,66&R\$ 48,40 \\[5pt]

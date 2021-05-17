@@ -16,7 +16,7 @@ Entretanto, o JSON é considerado um formato leve para o HTTP e seu ecossistema,
 % ---
 \section{End Node}
 \label{metod:node}
-O end node é o hardware que fica dentro dos ambientes de armazenagem coletando os dados de temperatura e umidade e enviado para o gateway. Para o melhor entendimento podemos separá-lo em três partes, o sensor, o transceptor LoRa e o microcontrolador, como pode ser visto na figura \ref{fig:end-node-schematic}.
+O end node é o hardware que fica dentro dos ambientes de armazenagem coletando os dados de temperatura e umidade e enviado para o gateway. O objetivo é que o end node seja \textit{plug-and-play}, que precisaria apenas colocá-lo dentro do refrigerador juntos com os imunobiológicos sem precisar modificar o ambiente, como por exemplo, adicionar um  cabo para suprir sua demanda energética. Para o melhor entendimento podemos separá-lo em três partes, o sensor, o transceptor LoRa e o microcontrolador, como pode ser visto na figura \ref{fig:end-node-schematic}.
 
 \begin{figure}[H]
   \centering
@@ -50,7 +50,7 @@ Ele coleta os dados utilizando o sensor DHT-22, formata os dados em uma string e
 % ---
 \subsection{Segundo Protótipo}
 \label{metod:end-node:2-proto}
-O objetivo na construção deste protótipo é construir um dispositivo com um tamanho reduzido e melhorar sua eficiência energética, visando o seu funcionamento por meses com apenas uma bateria de 2200 mAh, melhor detalhada na seção \ref{metod:end-node:bateria}. Para conseguir alcançar tais metas, é preciso remover as partes desnecessárias para o funcionamento da aplicação pelo Arduino. Empregando apenas os componentes essenciais, microcontrolador Atmega328, transceptor LoRa RFM95W e o sensor DHT-22, junto com alguns componentes de suporte para fornecer o funcionamento correto, um capacitor de cerâmica de 100pF, dois resistores de 10k Ohms  e um circuito para fornecer o clock para o microcontrolador composto por um cristal oscilador de 16mhz e dois capacitores de cerâmica de 22pF. Tal circuito, como pode ser visto na figura \ref{fig:end-node-proto-2} e seu esquemático na figura \ref{fig:end-node-proto-2-schematic}, foi montado em uma protoboard junto com um conversor USB para serial, para ser possível ver os logs do dispositivo pelo computador.
+O objetivo na construção deste protótipo é construir um dispositivo com um tamanho reduzido e melhorar sua eficiência energética, visando o seu funcionamento por meses com apenas uma bateria de 2200 mAh, melhor detalhada na seção \ref{metod:end-node:bateria}. Para conseguir alcançar tais metas, é preciso remover as partes desnecessárias para o funcionamento da aplicação pelo Arduino. Empregando apenas os componentes essenciais, microcontrolador Atmega328, transceptor LoRa RFM95W e o sensor DHT-22, junto com alguns componentes de suporte para fornecer o funcionamento correto, um capacitor de cerâmica de 100 pF, dois resistores de 10 kOhms  e um circuito para fornecer o clock para o microcontrolador composto por um cristal oscilador de 16 mhz e dois capacitores de cerâmica de 22 pF. Tal circuito, como pode ser visto na figura \ref{fig:end-node-proto-2} e seu esquemático na figura \ref{fig:end-node-proto-2-schematic}, foi montado em uma protoboard junto com um conversor USB para serial, para ser possível ver os logs do dispositivo pelo computador.
 
 \begin{figure}[H]
   \centering
@@ -88,7 +88,7 @@ A ideia inicial antes da análise era de usar duas pilhas AA convencionais, entr
 \label{tab:end-node-componentes-volts}
 \end{table}
 
-Depois de algumas pesquisas, nos deparamos com uma bateria genérica de referência 18650, que tem o mesmo tamanho de uma AA, é fácil de encontrar em lojas de eletrônica, tem uma capacidade que varia entre 2200mAh e 3400mAh conforme o fabricante, e o mais importante, tem a tensão nominal de 3.7 Volts, o máximo que nosso circuito suporta. Sabendo que os ambientes de armazenagens de vacinas ficaram em torno de -5°C a 8°C, na figura \ref{fig:battery-discharge} podemos ver a linha de descarga da bateria conforme a temperatura de funcionamento, para simplificar os cálculos podemos usar a linha em azul de 0°C. nossa tensão de corte é de 3.3 Volts, analisando o gráfico vemos que a bateria em um ambiente a 0°C a capacidade da bateria cai para aproximadamente 90\%, que equivale há 1980mAh do modelo de 2200mAh.
+Depois de algumas pesquisas, nos deparamos com uma bateria genérica de referência 18650, que tem o mesmo tamanho de uma AA, é fácil de encontrar em lojas de eletrônica, tem uma capacidade que varia entre 2200 mAh e 3400 mAh conforme o fabricante, e o mais importante, tem a tensão nominal de 3.7 Volts, o máximo que nosso circuito suporta. Sabendo que os ambientes de armazenagens de vacinas ficaram em torno de -5°C a 8°C, na figura \ref{fig:battery-discharge} podemos ver a linha de descarga da bateria conforme a temperatura de funcionamento, para simplificar os cálculos podemos usar a linha em azul de 0°C. nossa tensão de corte é de 3.3 Volts, analisando o gráfico vemos que a bateria em um ambiente a 0°C a capacidade da bateria cai para aproximadamente 90\%, que equivale há 1980 mAh do modelo de 2200 mAh.
 
 \begin{figure}[H]
   \centering
