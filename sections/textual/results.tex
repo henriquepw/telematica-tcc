@@ -101,4 +101,18 @@ Considerando que, ao utilizar um produto deste porte, não será mais necessári
   \caption{Custos referente as peças do segundo protótipo do \textit{end node} (autoral).}
   \label{tab:costs-2-proto}
 \end{table}
-  
+
+Temos então os preços dos protótipos da parte física, os hardwares, é preciso agora, calcular o custo da publicação do aplicativo na \textit{Play Store}, loja de aplicativos da Google, e o custo de hospedagem do servidor. Para a publicação do aplicativo é mais simples, a Google cobra apenas um valor fixo para poder realizar qualquer publicação na loja de \$25,00 dólares americanos, em torno de R\$ 131,56 na cotação do dia 17 de maio de 2021.
+
+Por fim, temos o custo da hospedagem do servidor, essa é um valor mensal que varia conforme a demanda de processamento, armazenamento e transferência de dados, e também é diferente para cada provedor. Dentre os diversos provedores, os mais conhecidos são: Amazon Web Services, Google Cloud, Microsoft Azure e DigitalOcean.
+
+A DigitalOcean oferece em seu site, uma calculadora que compara o custo em dólares americanos por mês, entre os provedores citados, conforme a configuração do servidor desejada \footnote{https://www.digitalocean.com/pricing/calculator/}. Inicialmente, a melhor configuração é a básica, pois a demanda de serviço é baixa, com o tempo, basta aumentar de acordo com o crescimento da demanda. Tendo isto em mente, levei em consideração a configuração básica e a de propósitos gerais fornecida pela DigitalOcean, os dados podem ser vistos na figura \ref{fig:server-chart}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.80\textwidth]{assets/server-chart.png} 
+  \caption{Comparação do custo mensal de hospedagem do servidor (Autoral).}
+  \label{fig:server-chart} 
+\end{figure}
+
+Na configuração básica, a DigitalOcean é a opção mais barata, custando \$5,00, seguido pela Google Cloud por \$6,00. Já na configuração de propósitos gerais, temos uma inversão, a mais barata fica com a Google Cloud por \$49,00 seguida pela DigitalOcean por \$60. Entretanto, conforme aumenta a demanda, acaba com a DigitalOcean ficando na frente, além dela prover uma boa usabilidade.
