@@ -34,7 +34,7 @@
   \begin{itemize}
     \item Bloco dos Professores
     \item Entre o Lab. Assert e o Lab. GComPI
-    \item Distância de 60 metros para testes
+    \item Distância de 60 metros
   \end{itemize}
   \begin{tikzpicture}[overlay, remember picture]
     \node[anchor=south,xshift=0pt,yshift=35pt] at (current page.south) {
@@ -101,31 +101,27 @@
   \framesubtitle{Duração da bateria nos protótipos}
   \begin{itemize}
     \item 1º protótipo: \alert{39,3 horas}
-    \item 2º protótipo: \alert{122,2 horas}
+    \item 2º protótipo utilizando delay: \alert{122,2 horas}
     \item 2º protótipo em modo sleep: \alert{35.849 horas}
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Análise do Custo de Produção}
-  \framesubtitle{\textcolor{fibeamer@black}{Geral}}
+\begin{frame}{Análise do Custo}
+  \framesubtitle{Custo total}
   \begin{table}[!b]{
     \scalebox{0.9} {
-      \carlitoTLF % Use monospaced lining figures
-      \begin{tabularx}{\textwidth}{lrr}
-        \textbf{Componente}&\textbf{Preço no Brasil}&\textbf{Preço na China}\\
+      \carlitoTLF
+      \begin{tabularx}{\textwidth}{Xr}
+        \textbf{Componente} & \textbf{Custo} \\
         \toprule
-        1x ATmega328 & R\$ 19,90 & R\$ 09,12 \\
-        1x LoRa RFM95W 915Mhz & R\$ 56,00 & R\$ 20,99 \\
-        1x Bateria 18650 3000mAh & R\$ 19,90 & R\$ 17,65 \\
-        1x Cristal Oscilador 16mhz & R\$ 01,47 & R\$ 00,46 \\
-        1x Capacitor de cerâmica 100pF & R\$ 00,05 & R\$ 00,04 \\
-        2x Capacitor de cerâmica 22pF & R\$ 00,22 & R\$ 00,08 \\
-        2x Resistores de 10k Ohms & R\$ 00,12 & R\$ 00,06 \\
+        Publicar o aplicativo & R\$ 135,00 \\
+        Hospedagem do Servidor & R\$ 27,00 \\
+        Gateway & R\$ 100,00 \\
+        End-node & R\$ 48,40 \\
         \bottomrule
-        \textnormal{\alert{Total}} & \alert{R\$ 97,66} & \alert{R\$ 48,40}
       \end{tabularx}
     }
   }
-    \caption{Custos referente as peças do segundo protótipo.}
+    \caption{Custos do sistema.}
   \end{table}
 \end{frame}
