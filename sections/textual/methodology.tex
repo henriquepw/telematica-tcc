@@ -2,32 +2,32 @@
 \label{cap:metodologia}
 O sistema proposto neste projeto, se refere a uma plataforma que fornece tanto os dispositivos para a captação dos dados dos imunobiológicos, quanto ao sistema em nuvem para armazenagem dos dados e de um aplicativo móvel para a gerência e análise das informações, seguindo a mesma estrutura representada na figura \ref{fig:end-nodes-gateways} na sessão \ref{fund:iot}, de modo a fornecer aos usuários, um produto  de fácil uso para monitorização de temperatura e umidade, possibilitando o histórico dos dados coletados em um determinado cliente.
 
-Podemos então, separar este sistema em quatro partes, cada uma delas com uma determinada função, elas são, end node, gateway, servidor e aplicativo móvel. Mas antes, para uma visão geral, vamos ver como foi estruturado o envio de pacotes entre cada etapa.
+Podemos então, separar este sistema em quatro partes, cada uma delas com uma determinada função, elas são, \textit{end node}, \textit{gateway}, servidor e aplicativo móvel. Mas antes, para uma visão geral, vamos ver como foi estruturado o envio de pacotes entre cada etapa.
 
 % ---
 \section{Estrutura dos Pacotes}
 \label{metod:pacotes}
 Definir um padrão de transmissão dos pacotes é de suma importância para facilitar a identificação dos dados e ajuda no reconhecimento de possíveis erros que possam ocorrer na transmissão dos dados.
 
-Dentre a comunicação do gateway, servidor e o aplicativo móvel, que utiliza o protocolo HTTP, existem vários padrões para transmitir dados já definidos e consolidados pela comunidade,  um dos mais utilizados é o \textit{JavaScript Object Notation}, JSON, um formato leve e de código aberto, se baseando na estrutura de objetos do JavaScript.
+Dentre a comunicação do \textit{gateway}, servidor e o aplicativo móvel, que utiliza o protocolo HTTP, existem vários padrões para transmitir dados já definidos e consolidados pela comunidade,  um dos mais utilizados é o \textit{JavaScript Object Notation}, JSON, um formato leve e de código aberto, se baseando na estrutura de objetos do JavaScript.
 
-Entretanto, o JSON é considerado um formato leve para o HTTP e seu ecossistema, para o LoRa, que tem um limite bem menor de dados para ser transmitido, é preciso utilizar outro padrão. Para isto, optamos pelo simples, transmitir os dados separando-os pelo caractere ponto e vírgula, na seguinte ordem: temperatura, umidade, identificador do end node e o contador de pacotes transmitidos.
+Entretanto, o JSON é considerado um formato leve para o HTTP e seu ecossistema, para o LoRa, que tem um limite bem menor de dados para ser transmitido, é preciso utilizar outro padrão. Para isto, optamos pelo simples, transmitir os dados separando-os pelo caractere ponto e vírgula, na seguinte ordem: temperatura, umidade, identificador do \textit{end node}  e o contador de pacotes transmitidos.
 
 % ---
 \section{End Node}
 \label{metod:node}
-O end node é o hardware que fica dentro dos ambientes de armazenagem coletando os dados de temperatura e umidade e enviado para o gateway. O objetivo é que o end node seja \textit{plug-and-play}, que precisaria apenas colocá-lo dentro do refrigerador juntos com os imunobiológicos sem precisar modificar o ambiente, como por exemplo, adicionar um  cabo para suprir sua demanda energética. Para o melhor entendimento podemos separá-lo em três partes, o sensor, o transceptor LoRa e o microcontrolador, como pode ser visto na figura \ref{fig:end-node-schematic}.
+O \textit{end node}  é o hardware que fica dentro dos ambientes de armazenagem coletando os dados de temperatura e umidade e enviado para o \textit{gateway}. O objetivo é que o \textit{end node}  seja \textit{plug-and-play}, que precisaria apenas colocá-lo dentro do refrigerador juntos com os imunobiológicos sem precisar modificar o ambiente, como por exemplo, adicionar um  cabo para suprir sua demanda energética. Para o melhor entendimento podemos separá-lo em três partes, o sensor, o transceptor LoRa e o microcontrolador, como pode ser visto na figura \ref{fig:end-node-schematic}.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=.80\textwidth]{assets/end-node-schematic.png} 
-  \caption{Representação da conexão entre os componentes principais do end node (autoral).}
+  \caption{Representação da conexão entre os componentes principais do \textit{end node} (autoral).}
   \label{fig:end-node-schematic} 
 \end{figure}
 
 Dentre os diversos sensores disponíveis no mercado para monitoramento de temperatura e umidade, optou-se por escolher um sensor da família DHT, pois é bastante difundida na comunidade, tendo uma boa relação custo benefício. Entre esses sensores, aderimos por usar o DHT22, que consegue captar a temperatura e umidade do ambiente dentro das faixas necessárias para o projeto, com uma boa precisão.
 
-Para o microcontrolador, foi escolhido usar um ATmega328, pois é o utilizado na maioria dos Arduino, o que nos trás dois grandes benefícios, poder utilizar um arduino como protótipo inicial, por ser fácil de encontrar, de programar e para um protótipo secundário, é possível construir uma placa própria utilizando apenas o ATmega328 e componentes essenciais para seu funcionamento, e por utilizar o mesmo microcontrolador do Arduíno é possível utilizar o mesmo código, bibliotecas e o mesmo Ambiente de desenvolvimento integrado, IDE, utilizado no primeiro protótipo.
+Para o microcontrolador, foi escolhido usar um ATmega328, pois é o utilizado na maioria dos Arduino, o que nos trás dois grandes benefícios, poder utilizar um arduino como protótipo inicial, por ser fácil de encontrar, de programar e para um protótipo secundário, é possível construir uma placa própria utilizando apenas o ATmega328 e componentes essenciais para seu funcionamento, e por utilizar o mesmo microcontrolador do Arduino é possível utilizar o mesmo código, bibliotecas e o mesmo Ambiente de desenvolvimento integrado, IDE, utilizado no primeiro protótipo.
 
 Entre os modelos de transceptores LoRa, o eleito foi o RFM95W, por ser o modelo mais simples e com menos custo e por ser o utilizado dentro do \textit{shield} Arduino, um componente modular feito para adicionar novas funcionalidades a um Arduino de forma fácil e prática, facilitando assim, o desenvolvimento do primeiro protótipo.
 
@@ -100,9 +100,9 @@ Depois de algumas pesquisas, nos deparamos com uma bateria genérica de referên
 % ---
 \section{Gateway}
 \label{metod:gateway}
-O gateway é o dispositivo que fica entre os end nodes e o servidor, e em cada um desses lados, é utilizado uma tecnologia de comunicação diferente, para receber os dados enviados pelos end nodes, se utiliza o LoRa, já para enviar estes dados para o servidor, utiliza-se o HTTP via WiFi. Por isso, é preciso que o gateway possua essas duas tecnologias nele. Felizmente, a Heltec Automation, uma empresa que desenvolve produtos voltada para a IoT utilizando o LoRa, possui um microcontrolador ESP32 que contém tanto o transceptor LoRa, quanto o WiFi, como podemos ver na figura \ref{fig:esp32-lora}. Para programá-lo, foi utilizado a linguagem Arduino, compartilhando assim, a mesma biblioteca entre o end node e o gateway, para o manuseio do transceptor LoRa.
+O \textit{gateway}  é o dispositivo que fica entre os \textit{end nodes}  e o servidor, e em cada um desses lados, é utilizado uma tecnologia de comunicação diferente, para receber os dados enviados pelos \textit{end nodes}, se utiliza o LoRa, já para enviar estes dados para o servidor, utiliza-se o HTTP via WiFi. Por isso, é preciso que o \textit{gateway}  possua essas duas tecnologias nele. Felizmente, a Heltec Automation, uma empresa que desenvolve produtos voltada para a IoT utilizando o LoRa, possui um microcontrolador ESP32 que contém tanto o transceptor LoRa, quanto o WiFi, como podemos ver na figura \ref{fig:esp32-lora}. Para programá-lo, foi utilizado a linguagem Arduino, compartilhando assim, a mesma biblioteca entre o \textit{end node} e o gateway, para o manuseio do transceptor LoRa.
 
-Seu funcionamento segue a seguinte linha, fica aguardando os pacotes dos end nodes. Ao receber um, é realizado uma análise de erro simples, onde é verificado se a formatação do pacote está como esperado, se for detectado algum erro de formatação é enviado para o servidor os valores do RSSI, SNR, o contador do pacote e um atributo booleano marcado como falso, indicando que veio com erro para a seguinte rota, \textit{/packages/:endnodeId}, onde \textit{:endnodeId} é substituído pelo identificador do end node recebido pelo gateway. Se nenhum erro foi detectado, é enviado para a rota do servidor \textit{/sensors/:endnodeId}, os mesmo dados de RSSI, SNR e contador do pacote com o acréscimo dos dados de temperatura e umidade.
+Seu funcionamento segue a seguinte linha, fica aguardando os pacotes dos \textit{end nodes}. Ao receber um, é realizado uma análise de erro simples, onde é verificado se a formatação do pacote está como esperado, se for detectado algum erro de formatação é enviado para o servidor os valores do RSSI, SNR, o contador do pacote e um atributo booleano marcado como falso, indicando que veio com erro para a seguinte rota, \textit{/packages/:endnodeId}, onde \textit{:endnodeId} é substituído pelo identificador do \textit{end node} recebido pelo \textit{gateway}. Se nenhum erro foi detectado, é enviado para a rota do servidor \textit{/sensors/:endnodeId}, os mesmo dados de RSSI, SNR e contador do pacote com o acréscimo dos dados de temperatura e umidade.
 
 \begin{figure}[H]
   \centering
@@ -111,19 +111,19 @@ Seu funcionamento segue a seguinte linha, fica aguardando os pacotes dos end nod
   \label{fig:esp32-lora} 
 \end{figure}
 
-A configuração do gateway, seu identificador criado pelo servidor e o nome e a senha da rede sem fio que vai ficar conectado, é feita por um ponto de acesso, onde ao liga-lo, ele fornece uma rede sem fio onde é possível acessar seu IP via navegador de Internet, e se pode realizar as configurações necessárias.
+A configuração do \textit{gateway}, seu identificador criado pelo servidor e o nome e a senha da rede sem fio que vai ficar conectado, é feita por um ponto de acesso, onde ao liga-lo, ele fornece uma rede sem fio onde é possível acessar seu IP via navegador de Internet, e se pode realizar as configurações necessárias.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=.80\textwidth]{assets/gateway-ap.png} 
-  \caption{Página de configuração do gateway (autoral).}
+  \caption{Página de configuração do \textit{gateway}  (autoral).}
   \label{fig:gateway-ap} 
 \end{figure}
 
 % ---
 \section{Servidor}
 \label{metod:servidor}
-Para este projeto, o servidor tem as seguintes responsabilidades: armazenar os dados coletados pelos end nodes, juntamente com os dados do instituto que está usando a aplicação e dos seus respectivos end nodes e gateways adquiridos; fornecer rotas para troca de informações com o aplicativo e o gateway, para que possam realizar suas devidas funções.
+Para este projeto, o servidor tem as seguintes responsabilidades: armazenar os dados coletados pelos \textit{end nodes}, juntamente com os dados do instituto que está usando a aplicação e dos seus respectivos \textit{end nodes} e \textit{gateways} adquiridos; fornecer rotas para troca de informações com o aplicativo e o \textit{gateway}, para que possam realizar suas devidas funções.
 
 % ---
 \subsection{Padrões de Projetos}
@@ -132,11 +132,11 @@ Foi escolhido para desenvolver o servidor, a utilização do Node.js e a linguag
 
 Vale salientar que, esses padrões de \textit{softwares}, são metodologias de desenvolvimento, e devem ser aplicados de acordo com a demanda da aplicação em construção. Elas são boas práticas, entretanto, dependendo do projeto, alguns pontos podem acabar deixando o processo lento, e dando pouco benefício, e por isso, nesse projeto, não foi seguido fielmente esses padrões, apenas foi baseado.
 
-Antes de tudo, é preciso definir as regras de negócio básicas do servidor, elas servem para garantir que a aplicação atenda as necessidades esperadas. Para este serviço deve ser possível o usuário se cadastrar, para assim realizar seu \textit{login}, e ter acesso às funcionalidades de cadastrar, editar e remover seus end nodes e seus gateways, além de poder visualizar os dados coletados.
+Antes de tudo, é preciso definir as regras de negócio básicas do servidor, elas servem para garantir que a aplicação atenda as necessidades esperadas. Para este serviço deve ser possível o usuário se cadastrar, para assim realizar seu \textit{login}, e ter acesso às funcionalidades de cadastrar, editar e remover seus \textit{end nodes} e seus \textit{gateways}, além de poder visualizar os dados coletados.
 
 Durante o desenvolvimento de um \textit{software}, é essencial que a entrega do \textit{software} funcione corretamente, com qualidade e de acordo com as regras de negócio. Para garantir tais exigências, é importante que se realize testes, tendo em vista identificar possíveis erros antes de chegar aos usuários. Entretanto, realizar testes corretamente é uma tarefa complicada, por isto, existem diversas metodologias que visam facilitar e simplificar tal desenvolvimento. O TDD é uma dessas metodologias, ela defende o desenvolvimento do teste antes das funcionalidades, garantindo a cobertura completa do código pelos testes.
 
-Junto com o TDD, foi utilizado também o DDD, uma filosofia para auxiliar os desenvolvedores na construção de aplicações complexas de \textit{software}, ela é referência na organização do código, separando por domínios, de forma isolada. Para poder implementar bem o DDD é preciso definir quais são os domínios da aplicação, analisando as regras de negócio, foi separado em três domínios: end nodes, gateways e usuários.
+Junto com o TDD, foi utilizado também o DDD, uma filosofia para auxiliar os desenvolvedores na construção de aplicações complexas de \textit{software}, ela é referência na organização do código, separando por domínios, de forma isolada. Para poder implementar bem o DDD é preciso definir quais são os domínios da aplicação, analisando as regras de negócio, foi separado em três domínios: \textit{end nodes}, \textit{gateways} e usuários.
 
 É preciso também, separar a camada de domínio da aplicação da camada de infraestrutura, a camada de infraestrutura é responsável pelas tecnologias utilizadas para realizar determinada função, por exemplo, a camada de domínio sabe que precisa armazenar os dados dos sensores, mas não é precisar saber onde e nem como, isso é de responsabilidade da camada de infraestrutura.
 
@@ -147,9 +147,9 @@ Para ter uma melhor separação das responsabilidades entre as camadas, é comum
 \label{metod:servidor:db}
 É preciso armazenar os dados coletados pelos sensores, para futuras consultas, armazenar os dados de transmissão dos pacotes, para analisar a qualidade da transmissão, e é preciso também, salvar os dados dos usuários e dos seus respectivos produtos cadastrados na plataforma. Tais dados têm suas diferenças, e por isto foi escolhido utilizar banco de dados diferentes para cada um deles.
 	
-Começando pelos dados coletados pelos sensores e transmitido pelos end nodes, esses dados são de medidas, coletados com um período curto, e consequentemente, possuem um grande volume. Por isto, foi escolhido utilizar o InfluxDB para armazenar tais dados.
+Começando pelos dados coletados pelos sensores e transmitido pelos \textit{end nodes}, esses dados são de medidas, coletados com um período curto, e consequentemente, possuem um grande volume. Por isto, foi escolhido utilizar o InfluxDB para armazenar tais dados.
 
-Foram criadas duas \textit{measurements} dentro do banco, uma referente aos dados dos sensores e outra aos dados do pacote transmitido, os dois possuindo a mesma  \textit{tag}, o identificador do end node, chamado de endnodeId. Dentro da medida Sensor, foi adicionado dois campos referente a temperatura e umidade do ambiente. Para a medida Package, foi adicionado os campos success, rssi e snr, atributos necessários para saber se o pacote foi entregue com sucesso, a dificuldade de transmitir esse pacote e a relação sinal-ruído. Podemos então ver uma representação do banco na figura \ref{fig:influxdb-model}.
+Foram criadas duas \textit{measurements} dentro do banco, uma referente aos dados dos sensores e outra aos dados do pacote transmitido, os dois possuindo a mesma  \textit{tag}, o identificador do \textit{end node}, chamado de endnodeId. Dentro da medida Sensor, foi adicionado dois campos referente a temperatura e umidade do ambiente. Para a medida Package, foi adicionado os campos success, rssi e snr, atributos necessários para saber se o pacote foi entregue com sucesso, a dificuldade de transmitir esse pacote e a relação sinal-ruído. Podemos então ver uma representação do banco na figura \ref{fig:influxdb-model}.
 
 \begin{figure}[H]
   \centering
@@ -160,7 +160,7 @@ Foram criadas duas \textit{measurements} dentro do banco, uma referente aos dado
 
 Diferentes dos dados que vem dos hardwares, as informações dos usuários e seus dispositivos, não possuem essa demanda alta de escrita e leitura, e mais importante, contém relações entre eles, o que torna banco de dados relacionais uma boa opção para armazenar tais dados. Entre tantos bancos de dados relacionais, foi optado por usar o PostgreSQL por motivos de afinidade.
 
-Cada usuário pode possuir inúmeras gateways e end nodes cadastrados, e cada end node precisa ser vinculado com apenas um gateway. Essas relações entre entre as entidades no postgres representada na figura \ref{fig:postgres-model}, foi pensada olhando tanto para os cenários de pequenos postos de saúde, que tem apenas um local para armazenar seus imunobiológicos, quando para grande hospitais e laboratórios, que pode tem varias salas, com dada sala contendo uma ou mais equipamentos frigoríficos.
+Cada usuário pode possuir inúmeros \textit{gateways} e \textit{end nodes} cadastrados, e cada \textit{end node} precisa ser vinculado com apenas um \textit{gateway}. Essas relações entre entre as entidades no postgres representada na figura \ref{fig:postgres-model}, foi pensada olhando tanto para os cenários de pequenos postos de saúde, que tem apenas um local para armazenar seus imunobiológicos, quando para grande hospitais e laboratórios, que pode tem varias salas, com dada sala contendo uma ou mais equipamentos frigoríficos.
 
 \begin{figure}[H]
   \centering
@@ -184,7 +184,7 @@ Entre as opções de servidores na nuvem, foi escolhido por usar a Microsoft Azu
 % ---
 \section{Aplicativo móvel}
 \label{metod:app}
-À necessidade de ter uma aplicação para que os usuários possam gerenciar seus   e seus gateways, e poder acessar o histórico das medidas coletadas, tal aplicação poderia ser uma página web, entretanto, tendo em vista o crescimento do uso dos smartphones, tivemos como preferência a criação de uma aplicação móvel, mas especificamente para o sistema operacional Android, devido ao sistema iOS da Apple, restringir seu desenvolvimento para aparelhos da marca, incluindo a necessidade de um computador do mesmo para poder emular um dispositivo móvel com seu sistema operacional.
+À necessidade de ter uma aplicação para que os usuários possam gerenciar seus \textit{end nodes} e seus \textit{gateways}, e poder acessar o histórico das medidas coletadas, tal aplicação poderia ser uma página web, entretanto, tendo em vista o crescimento do uso dos smartphones, tivemos como preferência a criação de uma aplicação móvel, mas especificamente para o sistema operacional Android, devido ao sistema iOS da Apple, restringir seu desenvolvimento para aparelhos da marca, incluindo a necessidade de um computador do mesmo para poder emular um dispositivo móvel com seu sistema operacional.
 
 Tendo em mente as regras de negócios destrinchadas na seção \ref{metod:servidor:padroes}, a primeira coisa feita foi o desenho das telas utilizando a ferramenta figma, específica para tal tarefa. Ao finalizar os desenhos das telas, partimos para a programação.
 

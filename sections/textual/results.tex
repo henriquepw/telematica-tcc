@@ -5,7 +5,7 @@ Para sabermos se o protótipo atingiu nossos objetivos é preciso analisar três
 % ---
 \section{Análise de Transmissão dos Pacotes}
 \label{result:transmissao}
-Foi executado um teste de transmissão de pacotes com o objetivo de verificar a capacidade de transmissão em um longo alcance em um ambiente com altas interferências. O experimento foi realizado no bloco dos professores do IFPB - Campus Campina Grande, onde o \textit{end node} ficou posicionado no laboratório GComPi, localizado no subsolo, enquanto o \textit{gateway} ficou em um espaço diferente, no Laboratório Assert, no térreo do prédio, com cerca de sessenta metros de distância entre os dispositivos, e contanto com obstáculos variados à comunicação, como paredes densas, laje, objetos metálicos e equipamentos eletrônicos. Na figura \ref{fig:experiment-01} podemos ver a distância entre o gateway e o end node, respectivamente, A e B.
+Foi executado um teste de transmissão de pacotes com o objetivo de verificar a capacidade de transmissão em um longo alcance em um ambiente com altas interferências. O experimento foi realizado no bloco dos professores do IFPB - Campus Campina Grande, onde o \textit{end node} ficou posicionado no laboratório GComPi, localizado no subsolo, enquanto o \textit{gateway} ficou em um espaço diferente, no Laboratório Assert, no térreo do prédio, com cerca de sessenta metros de distância entre os dispositivos, e contanto com obstáculos variados à comunicação, como paredes densas, laje, objetos metálicos e equipamentos eletrônicos. Na figura \ref{fig:experiment-01} podemos ver a distância entre o \textit{gateway} e o \textit{end node}, respectivamente, A e B.
 
 \begin{figure}[H]
   \centering
@@ -76,9 +76,9 @@ Agora, com esses dados, podemos calcular a duração teórica dos protótipos  p
 % ---
 \section{Análise do Custo}
 \label{result:custo}
-Todas as compras dos equipamentos foram realizadas no Brasil e em baixa quantidade, o que acaba deixando o protótipo mais caro comparado a compra realizada na China ou comprando em grande escala, que acaba tendo uma redução considerável do seu custo. Tendo isto em mente, podemos analisar a tabela \ref{tab:costs-2-proto}, representando o custo (sem consideração do frete), da cada peça encontrada no Brasil e na China para montar o segundo protótipo do \textit{end node} apresentado na sessão \ref{metod:end-node:2-proto}. Os dados da tabela foram preenchidos com os menores valores encontrados no dia 11 de abril de 2021 considerando os revendedores mais confiáveis. Temos então, um total de R\$ 97,66 comprando localmente e R\$ 48,40 importando, que dá em torno de 49,56\% a menos comprando na China, tornando assim um melhor custo benefício.	Já para o \textit{gateway}, o preço no Brasil fica em torno de R\$  180,00 e importando pode ser encontrado por menos de R\$  100,00.
+Todas as compras dos equipamentos foram realizadas no Brasil e em baixa quantidade, o que acaba deixando o protótipo mais caro comparado a compra realizada na China ou comprando em grande escala, que acaba tendo uma redução considerável do seu custo. Tendo isto em mente, podemos analisar a tabela \ref{tab:costs-2-proto}, representando o custo (sem consideração do frete), da cada peça encontrada no Brasil e na China para montar o segundo protótipo do \textit{end node} apresentado na sessão \ref{metod:end-node:2-proto}. Os dados da tabela foram preenchidos com os menores valores encontrados no dia 11 de abril de 2021 considerando os revendedores mais confiáveis. Temos então, um total de R\$ 97,66 comprando localmente e R\$ 48,40 importando, que dá em torno de 49,56\% a menos comprando na China, tornando assim um melhor custo benefício.	Já para o \textit{gateway}, o preço no Brasil fica em torno de R\$ 180,00 e importando pode ser encontrado por menos de R\$ 100,00.
 
-Considerando que, ao utilizar um produto deste porte, não será mais necessário a compra de câmeras conservadoras com monitoração,  que pode chegar a custar R\$ 10.000,00, podendo assim, economizar até R\$ 7.000,00 por refrigerador, tornando o nosso produto viável financeiramente para as empresas.
+Considerando que, ao utilizar um produto deste porte, não será mais necessário a compra de câmeras conservadoras com monitoração, que pode chegar a custar R\$ 10.000,00, podendo assim, economizar até R\$ 7.000,00 por refrigerador, tornando o nosso produto viável financeiramente para as empresas.
 
 \begin{table}[H]
   \centering 
@@ -102,11 +102,11 @@ Considerando que, ao utilizar um produto deste porte, não será mais necessári
   \label{tab:costs-2-proto}
 \end{table}
 
-Temos então os preços dos protótipos da parte física, os hardwares, é preciso agora, calcular o custo da publicação do aplicativo na \textit{Play Store}, loja de aplicativos da Google, e o custo de hospedagem do servidor. Para a publicação do aplicativo é mais simples, a Google cobra apenas um valor fixo para poder realizar qualquer publicação na loja de \$25,00 dólares americanos, em torno de R\$ 131,56 na cotação do dia 17 de maio de 2021.
+Temos então os preços dos protótipos da parte física, os hardwares, é preciso agora, calcular o custo da publicação do aplicativo na \textit{Play Store}, loja de aplicativos da Google, e o custo de hospedagem do servidor. Para a publicação do aplicativo é mais simples, a Google cobra apenas um valor fixo para poder realizar qualquer publicação na loja de US\$25,00, em torno de R\$ 131,56 na cotação do dia 17 de maio de 2021.
 
 Por fim, temos o custo da hospedagem do servidor, essa é um valor mensal que varia conforme a demanda de processamento, armazenamento e transferência de dados, e também é diferente para cada provedor. Dentre os diversos provedores, os mais conhecidos são: Amazon Web Services, Google Cloud, Microsoft Azure e DigitalOcean.
 
-A DigitalOcean oferece em seu site, uma calculadora que compara o custo em dólares americanos por mês, entre os provedores citados, conforme a configuração do servidor desejada \footnote{https://www.digitalocean.com/pricing/calculator/}. Inicialmente, a melhor configuração é a básica, pois a demanda de serviço é baixa, com o tempo, basta aumentar de acordo com o crescimento da demanda. Tendo isto em mente, levei em consideração a configuração básica e a de propósitos gerais fornecida pela DigitalOcean, os dados podem ser vistos na figura \ref{fig:server-chart}.
+A DigitalOcean oferece em seu site, uma calculadora que compara o custo em dólares estadounidenses por mês, entre os provedores citados, conforme a configuração do servidor desejada \footnote{https://www.digitalocean.com/pricing/calculator/}. Inicialmente, a melhor configuração é a básica, pois a demanda de serviço é baixa, com o tempo, basta aumentar de acordo com o crescimento da demanda. Tendo isto em mente, levei em consideração a configuração básica e a de propósitos gerais fornecida pela DigitalOcean, os dados podem ser vistos na figura \ref{fig:server-chart}.
 
 \begin{figure}[H]
   \centering
@@ -115,4 +115,4 @@ A DigitalOcean oferece em seu site, uma calculadora que compara o custo em dóla
   \label{fig:server-chart} 
 \end{figure}
 
-Na configuração básica, a DigitalOcean é a opção mais barata, custando \$5,00, seguido pela Google Cloud por \$6,00. Já na configuração de propósitos gerais, temos uma inversão, a mais barata fica com a Google Cloud por \$49,00 seguida pela DigitalOcean por \$60. Entretanto, conforme aumenta a demanda, acaba com a DigitalOcean ficando na frente, além dela prover uma boa usabilidade.
+Na configuração básica, a DigitalOcean é a opção mais barata, custando US\$5,00, seguido pela Google Cloud por US\$6,00. Já na configuração de propósitos gerais, temos uma inversão, a mais barata fica com a Google Cloud por US\$49,00 seguida pela DigitalOcean por US\$60. Entretanto, conforme aumenta a demanda, acaba com a DigitalOcean ficando na frente, além dela prover uma boa usabilidade.
