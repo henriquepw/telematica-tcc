@@ -1,6 +1,6 @@
 \chapter{Resultados}
 \label{cap:result}
-Para sabermos se o protótipo atingiu nossos objetivos é preciso analisar três pontos importantes: sua capacidade de transmissão em longo alcance juntamente com a eficiência de lidar com altas interferências ao longo do trajeto, seu consumo energético e seu custo de produção.
+Para sabermos se o protótipo atingiu nossos objetivos é preciso analisar três pontos importantes: sua capacidade de transmissão em longo alcance juntamente com a eficiência de lidar com altas interferências ao longo do trajeto, seu consumo energético e seu custo de produção. Todo o código fonte desenvolvido neste projeto pode ser acesso em \cite{owlify}.
 
 % ---
 \section{Análise de Transmissão dos Pacotes}
@@ -14,7 +14,7 @@ Foi executado um teste de transmissão de pacotes com o objetivo de verificar a 
   \label{fig:experiment-01} 
 \end{figure}
 
-Os dispositivos ficaram funcionando por cinco dias, 24 horas por dia, realizando envios contínuos de pacotes em intervalos de cinco minutos. O gráfico na figura \ref{fig:21-04-2020-pdr-rssi} apresenta a taxa de entrega de pacote, PDR, por horas, das coletas realizadas no dia 21 de abril de 2020. A média geral da PDR foi de 78,82\%, um valor agradável, no entanto, em alguns momentos a PDR ficou em torno de 20\%, o que pode ter sido ocasionado por modificações no perfil de multi-percurso do ambiente, obstáculos temporários ou presença de fontes de interferência. Considerando a taxa de transmissão de pacote utilizada, com PDR de 20\% ainda é possível obter uma nova informação a cada 25 minutos, em média, o que é suficiente para a realização do monitoramento de temperatura e umidade, que são grandezas que variam lentamente.
+Os dispositivos ficaram funcionando por cinco dias, 24 horas por dia, realizando envios contínuos de pacotes em intervalos de cinco minutos e o código da análise poder ser acessado em \cite{owlify_lora_transmitter_test}. O gráfico na figura \ref{fig:21-04-2020-pdr-rssi} apresenta a taxa de entrega de pacote, PDR, por horas, das coletas realizadas no dia 21 de abril de 2020. A média geral da PDR foi de 78,82\%, um valor agradável, no entanto, em alguns momentos a PDR ficou em torno de 20\%, o que pode ter sido ocasionado por modificações no perfil de multi-percurso do ambiente, obstáculos temporários ou presença de fontes de interferência. Considerando a taxa de transmissão de pacote utilizada, com PDR de 20\% ainda é possível obter uma nova informação a cada 25 minutos, em média, o que é suficiente para a realização do monitoramento de temperatura e umidade, que são grandezas que variam lentamente.
 
 \begin{figure}[H]
   \centering
